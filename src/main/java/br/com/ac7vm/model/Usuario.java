@@ -1,0 +1,141 @@
+package br.com.ac7vm.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+@Entity
+public class Usuario {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idusuario;
+	@NotEmpty
+	@Size(max = 100)
+	@Column(name = "nome")
+	private String nome;
+	@NotEmpty
+	@Size(max = 45)
+	@Column(name = "login")
+	private String login;
+	@NotEmpty
+	@Size(max = 200)
+	@Column(name = "senha")
+	private String senha;
+	@NotEmpty
+	@Size(max = 1)
+	@Column(name = "sexo")
+	private String sexo;
+	@NotEmpty
+	@Size(max = 200)
+	@Column(name = "email")
+	private String email;
+	@NotEmpty
+	@Size(max = 15)
+	@Column(name = "fonefixo")
+	private String fonefix;
+	@NotEmpty
+	@Size(max = 15)
+	@Column(name = "fonecelular")
+	private String fonecelular;
+	
+	public Usuario() {
+		
+	}
+
+	public int getIdusuario() {
+		return idusuario;
+	}
+
+	public void setIdusuario(int idusuario) {
+		this.idusuario = idusuario;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getFonefix() {
+		return fonefix;
+	}
+
+	public void setFonefix(String fonefix) {
+		this.fonefix = fonefix;
+	}
+
+	public String getFonecelular() {
+		return fonecelular;
+	}
+
+	public void setFonecelular(String fonecelular) {
+		this.fonecelular = fonecelular;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idusuario;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (idusuario != other.idusuario)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + idusuario + ", nome=" + nome + "]";
+	}
+}
+	
