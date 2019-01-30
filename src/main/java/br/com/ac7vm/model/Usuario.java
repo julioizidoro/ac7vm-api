@@ -1,10 +1,14 @@
 package br.com.ac7vm.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -18,6 +22,9 @@ public class Usuario {
 	@Size(max = 100)
 	@Column(name = "nome")
 	private String nome;
+	@Column(name = "datanascimento")
+    @Temporal(TemporalType.DATE)
+    private Date nascimento;
 	@NotEmpty
 	@Size(max = 45)
 	@Column(name = "login")
@@ -61,6 +68,14 @@ public class Usuario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Date getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(Date nascimento) {
+		this.nascimento = nascimento;
 	}
 
 	public String getLogin() {
