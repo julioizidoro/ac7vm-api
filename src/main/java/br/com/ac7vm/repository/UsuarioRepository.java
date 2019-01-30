@@ -11,7 +11,9 @@ import br.com.ac7vm.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	
-	Optional<Usuario> findByLoginAndSenha(String Login, String Senha);
+	Optional<Usuario> findByLoginAndSenhaAndSituacao(String Login, String Senha, boolean Situacao);
 	Optional<List<Usuario>> findByNomeContainingOrderByNome(String Nome);
+	Optional<List<Usuario>> findBySituacaoOrderByNome(boolean Situacao);
+	
 	
 }

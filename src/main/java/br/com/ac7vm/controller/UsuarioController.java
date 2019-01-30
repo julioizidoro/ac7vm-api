@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import br.com.ac7vm.model.Usuario;
 import br.com.ac7vm.repository.UsuarioRepository;
@@ -31,12 +30,14 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	@GetMapping
-	public Usuario usuario() {
-		Usuario usuario = new Usuario();
-		usuario.setIdusuario(1);
-		usuario.setNome("Julio Izidoro");
-		return usuario;
+	@GetMapping("buscar/{situacao}")
+	public ResponseEntity<Optional<List<Usuario>>> buscarSituacao(@PathVariable("situacao") boolean situacao) {
+		Optional<List<Usuario>> usuarios = usuarioRepository.findBySituacaoOrderByNome(situacao);
+		if (usuarios==null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(usuarios);
 	}
 	
 	@PostMapping
@@ -62,7 +63,7 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> buscar(@PathVariable("login") String login, @PathVariable("senha") String senha) {
 		Criptografia criptografia = new Criptografia();
 		senha = (criptografia.encript(senha));
-		Optional<Usuario> usuario = usuarioRepository.findByLoginAndSenha(login, senha);
+		Optional<Usuario> usuario = usuarioRepository.findByLoginAndSenhaAndSituacao(login, senha,true);
 		
 		if (usuario==null) {
 			return ResponseEntity.notFound().build();
@@ -73,13 +74,13 @@ public class UsuarioController {
 	
 	@GetMapping("buscarnome/{nome}")
 	public ResponseEntity<Optional<List<Usuario>>> buscarNome(@PathVariable("nome") String nome) {
-		Optional<List<Usuario>> usuario = usuarioRepository.findByNomeContainingOrderByNome(nome);
+		Optional<List<Usuario>> usuarios = usuarioRepository.findByNomeContainingOrderByNome(nome);
 		
-		if (usuario==null) {
+		if (usuarios==null) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		return ResponseEntity.ok(usuario);
+		return ResponseEntity.ok(usuarios);
 	}
 
 }

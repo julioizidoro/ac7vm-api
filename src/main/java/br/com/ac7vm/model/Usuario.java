@@ -49,6 +49,8 @@ public class Usuario {
 	@Size(max = 15)
 	@Column(name = "fonecelular")
 	private String fonecelular;
+	@Column(name = "situacao")
+	private boolean situacao;
 	
 	public Usuario() {
 		
@@ -124,6 +126,14 @@ public class Usuario {
 
 	public void setFonecelular(String fonecelular) {
 		this.fonecelular = fonecelular;
+	}
+
+	public boolean isSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(boolean situacao) {
+		this.situacao = situacao;
 	}
 
 	@Override
