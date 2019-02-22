@@ -37,9 +37,6 @@ public class Cliente {
 	@Column(name = "cpfcnpj")
 	private String cpfcnpj;
 	@NotEmpty
-	@Size(max = 1)
-	@Column(name = "corespondencia")
-	private String corespondencia;
 	@NotEmpty
 	@Size(max = 14)
 	@Column(name = "fonecelular")
@@ -112,17 +109,6 @@ public class Cliente {
 	public void setCpfcnpj(String cpfcnpj) {
 		this.cpfcnpj = cpfcnpj;
 	}
-
-
-	public String getCorespondencia() {
-		return corespondencia;
-	}
-
-
-	public void setCorespondencia(String corespondencia) {
-		this.corespondencia = corespondencia;
-	}
-
 
 	public String getFonecelular() {
 		return fonecelular;

@@ -6,9 +6,15 @@
 package br.com.ac7vm.util;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+
+
 
 /**
  *
@@ -16,14 +22,30 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  */
 public class Criptografia {
 	
-	private static final Logger log = LoggerFactory.getLogger(Criptografia.class);
+	
  
-    public String encript(String senha)  {
-    	if (senha==null) {
-    		return senha;
-    	}
-    	log.info("Gerando hash com o BCrypto");
-    	BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-    	return bCryptPasswordEncoder.encode(senha);
-    }
+    
+	public String encript(String value) {
+		String senha = null;
+		MessageDigest algorithm = null;
+		try {
+			algorithm = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		byte messageDigest[] = null;
+		try {
+			messageDigest = algorithm.digest(value.getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException ex) {
+			Logger.getLogger(Criptografia.class.getName()).log(Level.SEVERE, null, ex);
+		}
+
+		StringBuilder hexString = new StringBuilder();
+		for (byte b : messageDigest) {
+			hexString.append(String.format("%02X", 0xFF & b));
+		}
+		senha = hexString.toString();
+		return senha;
+	}
 }

@@ -59,24 +59,24 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuario.get());
 	}
 	
-	@GetMapping("/{login}/{senha}")
+	@GetMapping("/logar/{login}/{senha}")
 	public ResponseEntity<Usuario> buscar(@PathVariable("login") String login, @PathVariable("senha") String senha) {
 		Criptografia criptografia = new Criptografia();
 		senha = (criptografia.encript(senha));
-		Optional<Usuario> usuario = usuarioRepository.findByLoginAndSenhaAndSituacao(login, senha,true);
+		Usuario usuario = usuarioRepository.findByLoginAndSenhaAndSituacao(login, senha, true);
 		
 		if (usuario==null) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		return ResponseEntity.ok(usuario.get());
+		return ResponseEntity.ok(usuario);
 	}
 	
 	@GetMapping("buscarnome/{nome}")
 	public ResponseEntity<Optional<List<Usuario>>> buscarNome(@PathVariable("nome") String nome) {
 		Optional<List<Usuario>> usuarios = usuarioRepository.findByNomeContainingOrderByNome(nome);
 		
-		if (usuarios==null) {
+		if (usuarios.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		
