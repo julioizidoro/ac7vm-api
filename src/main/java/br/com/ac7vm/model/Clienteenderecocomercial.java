@@ -40,9 +40,12 @@ public class Clienteenderecocomercial {
 	@Size(max = 50)
 	@Column(name = "estado")
 	private String estado;
-	@JoinColumn(name = "cliente_idcliente", referencedColumnName = "idcliente")
+	@Size(max = 14)
+	@Column(name = "fonecomercial")
+	private String fonecomercial;
+	@JoinColumn(name = "instituicao_idinstituicao", referencedColumnName = "idinstituicao")
     @OneToOne(optional = false)
-    private Cliente cliente;
+    private Instituicao instituicao;
 	
 	public Clienteenderecocomercial() {
 		
@@ -104,12 +107,22 @@ public class Clienteenderecocomercial {
 		this.estado = estado;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	
+
+	public Instituicao getInstituicao() {
+		return instituicao;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
+	}
+
+	public String getFonecomercial() {
+		return fonecomercial;
+	}
+
+	public void setFonecomercial(String fonecomercial) {
+		this.fonecomercial = fonecomercial;
 	}
 
 	@Override

@@ -32,9 +32,9 @@ public class Clientesocio {
 	@Size(max = 100)
 	@Column(name = "email")
 	private String email;
-	@JoinColumn(name = "cliente_idcliente", referencedColumnName = "idcliente")
+	@JoinColumn(name = "instituicao_idinstituicao", referencedColumnName = "idinstituicao")
     @OneToOne(optional = false)
-    private Cliente cliente;
+    private Instituicao instituicao;
 	
 	public Clientesocio() {
 		
@@ -80,12 +80,13 @@ public class Clientesocio {
 		this.email = email;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	
+	public Instituicao getInstituicao() {
+		return instituicao;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
 	}
 
 	@Override
