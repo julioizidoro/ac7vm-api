@@ -52,7 +52,7 @@ public class FornecedorController {
 	}
 	
 	@GetMapping
-	@Cacheable("consultaFornecedor")
+	@Cacheable("consultaFornecedores")
 	public ResponseEntity<List<Fornecedor>> listar() {
 		Sort sort = new Sort(Sort.Direction.ASC, "Nome");
 		List<Fornecedor> lista = fornecedorRepository.findAll(sort);
@@ -65,7 +65,7 @@ public class FornecedorController {
 	
 	
 	@PostMapping
-	@CachePut("consultaFornecedor")
+	@CachePut("consultaFornecedores")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Fornecedor salvar(@Valid @RequestBody Fornecedor fornecedor) {
 		return fornecedorRepository.save(fornecedor);

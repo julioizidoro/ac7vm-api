@@ -52,7 +52,7 @@ public class GrupoPlanoContaController {
 	}
 	
 	@GetMapping
-	@Cacheable("consultaGrupoplanoconta")
+	@Cacheable("consultaGrupoContas")
 	public ResponseEntity<List<Grupoplanoconta>> listar() {
 		Sort sort = new Sort(Sort.Direction.ASC, "Nome");
 		List<Grupoplanoconta> lista = grupoPlanoContaRepository.findAll(sort);
@@ -65,7 +65,7 @@ public class GrupoPlanoContaController {
 	
 	
 	@PostMapping
-	@CachePut("consultaGrupoplanoconta")
+	@CachePut("consultaGrupoContas")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Grupoplanoconta salvar(@Valid @RequestBody Grupoplanoconta Grupoplanoconta) {
 		return grupoPlanoContaRepository.save(Grupoplanoconta);

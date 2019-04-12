@@ -38,6 +38,16 @@ public class InstituicaoController {
 		return ResponseEntity.ok(lista);
 	}
 	
+	@GetMapping("listar/{nome}/email")
+	public ResponseEntity<Optional<List<Instituicao>>> listar(@PathVariable("nome") String nome, @PathVariable("email") String email) {
+		Optional<List<Instituicao>> lista = instituicaoResository.findByNomeContainingOrEmailContainingOrderByNome(nome, email);
+		if (lista==null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(lista);
+	}
+	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Instituicao salvar(@Valid @RequestBody Instituicao instituicao) {

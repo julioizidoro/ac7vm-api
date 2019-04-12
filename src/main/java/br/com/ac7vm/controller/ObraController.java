@@ -52,7 +52,7 @@ public class ObraController {
 	}
 	
 	@GetMapping
-	@Cacheable("consultaObra")
+	@Cacheable("consultaObras")
 	public ResponseEntity<List<Obra>> listar() {
 		Sort sort = new Sort(Sort.Direction.ASC, "Nome");
 		List<Obra> lista = obraRepository.findAll(sort);
@@ -65,7 +65,7 @@ public class ObraController {
 	
 	
 	@PostMapping
-	@CachePut("consultaObra")
+	@CachePut("consultaObras")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Obra salvar(@Valid @RequestBody Obra Obra) {
 		return obraRepository.save(Obra);

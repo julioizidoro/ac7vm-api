@@ -52,7 +52,7 @@ public class ServicoController {
 	}
 	
 	@GetMapping
-	@Cacheable("consultaServico")
+	@Cacheable("consultaServicos")
 	public ResponseEntity<List<Servico>> listar() {
 		Sort sort = new Sort(Sort.Direction.ASC, "Nome");
 		List<Servico> lista = servicoRepository.findAll(sort);
@@ -65,7 +65,7 @@ public class ServicoController {
 	
 	
 	@PostMapping
-	@CachePut("consultaServico")
+	@CachePut("consultaServicos")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Servico salvar(@Valid @RequestBody Servico Servico) {
 		return servicoRepository.save(Servico);

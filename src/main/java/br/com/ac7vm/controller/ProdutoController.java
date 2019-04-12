@@ -54,7 +54,7 @@ public class ProdutoController {
 	}
 	
 	@GetMapping
-	@Cacheable("consultaProduto")
+	@Cacheable("consultaProdutos")
 	public ResponseEntity<List<Produto>> listar() {
 		Sort sort = new Sort(Sort.Direction.ASC, "Descricao");
 		List<Produto> lista = produtoRepository.findAll(sort);
@@ -67,7 +67,7 @@ public class ProdutoController {
 	
 	
 	@PostMapping
-	@CachePut("consultaProduto")
+	@CachePut("consultaProdutos")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produto salvar(@Valid @RequestBody Produto Produto) {
 		return produtoRepository.save(Produto);

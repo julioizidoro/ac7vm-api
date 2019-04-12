@@ -8,4 +8,32 @@
 		maxEntriesLocalHeap="200"
 		timeToLiveSeconds="3600">
 	</cache>
+	<cache name="consultaFornecedores" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+	</cache>
+	<cache name="consultaProdutos" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+	</cache>
+	<cache name="consultaServicos" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+	</cache>
+	<cache name="consultaObras" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+	</cache>
+	<cache name="consultaFases" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+	</cache>
+	<cache name="consultaGrupoContas" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+	</cache>
+	<cache name="consultaPlanoContas" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+	</cache>
 </ehcache>

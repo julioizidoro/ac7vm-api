@@ -52,7 +52,7 @@ public class PlanoContaController {
 	}
 	
 	@GetMapping
-	@Cacheable("consultaPlanoconta")
+	@Cacheable("consultaPlanoContas")
 	public ResponseEntity<List<Planoconta>> listar() {
 		Sort sort = new Sort(Sort.Direction.ASC, "Nome");
 		List<Planoconta> lista = planoContaRepository.findAll(sort);
@@ -65,7 +65,7 @@ public class PlanoContaController {
 	
 	
 	@PostMapping
-	@CachePut("consultaPlanoconta")
+	@CachePut("consultaPlanoContas")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Planoconta salvar(@Valid @RequestBody Planoconta Planoconta) {
 		return planoContaRepository.save(Planoconta);
