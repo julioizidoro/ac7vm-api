@@ -29,6 +29,9 @@ public class Planoconta implements Serializable {
     @Size(max = 100)
     @Column(name = "descricao")
     private String descricao;
+    @Size(max = 10)
+    @Column(name = "conta")
+    private String conta;
     @JoinColumn(name = "grupoplanoconta_idgrupoplanoconta", referencedColumnName = "idgrupoplanoconta")
     @ManyToOne(optional = false)
     private Grupoplanoconta grupoplanoconta;
@@ -56,7 +59,15 @@ public class Planoconta implements Serializable {
         this.descricao = descricao;
     }
 
-    public Grupoplanoconta getGrupoplanoconta() {
+    public String getConta() {
+		return conta;
+	}
+
+	public void setConta(String conta) {
+		this.conta = conta;
+	}
+
+	public Grupoplanoconta getGrupoplanoconta() {
         return grupoplanoconta;
     }
 

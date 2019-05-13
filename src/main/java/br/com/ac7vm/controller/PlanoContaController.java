@@ -54,7 +54,7 @@ public class PlanoContaController {
 	@GetMapping
 	@Cacheable("consultaPlanoContas")
 	public ResponseEntity<List<Planoconta>> listar() {
-		Sort sort = new Sort(Sort.Direction.ASC, "Nome");
+		Sort sort = new Sort(Sort.Direction.ASC, "Descricao");
 		List<Planoconta> lista = planoContaRepository.findAll(sort);
 		if (lista==null) {
 			return ResponseEntity.notFound().build();

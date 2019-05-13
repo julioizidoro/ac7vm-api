@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.ac7vm.model.Instituicao;
 import br.com.ac7vm.repository.InstituicaoRepository;
 
-@CrossOrigin("*")
+@CrossOrigin
 @RestController
 @RequestMapping("/instituicao")
 public class InstituicaoController {
@@ -46,6 +46,16 @@ public class InstituicaoController {
 		}
 		
 		return ResponseEntity.ok(lista);
+	}
+	
+	@GetMapping("id/{id}")
+	public ResponseEntity<Optional<Instituicao>> listar(@PathVariable("id") int id) {
+		Optional<Instituicao> instituicao = instituicaoResository.findById(id);
+		if (instituicao==null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(instituicao);
 	}
 	
 	@PostMapping

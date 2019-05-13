@@ -32,8 +32,18 @@ public class GrupoPlanoContaController {
 	private GrupoPlanoContaRepository grupoPlanoContaRepository;
 	
 	@GetMapping("descricao/{descricao}")
-	public ResponseEntity<Optional<List<Grupoplanoconta>>> pesquisar(@PathVariable("descricao") String descricao) {
+	public ResponseEntity<Optional<List<Grupoplanoconta>>> pesquisarDescricao(@PathVariable("descricao") String descricao) {
 		Optional<List<Grupoplanoconta>> lista = grupoPlanoContaRepository.findByDescricaoContainingOrderByDescricao(descricao);
+		if (lista==null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(lista);
+	}
+	
+	@GetMapping("conta/{conta}")
+	public ResponseEntity<Optional<List<Grupoplanoconta>>> pesquisarConta(@PathVariable("conta") String conta) {
+		Optional<List<Grupoplanoconta>> lista = grupoPlanoContaRepository.findByContaContainingOrderByDescricao(conta);
 		if (lista==null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -54,7 +64,7 @@ public class GrupoPlanoContaController {
 	@GetMapping
 	@Cacheable("consultaGrupoContas")
 	public ResponseEntity<List<Grupoplanoconta>> listar() {
-		Sort sort = new Sort(Sort.Direction.ASC, "Nome");
+		Sort sort = new Sort(Sort.Direction.ASC, "descricao");
 		List<Grupoplanoconta> lista = grupoPlanoContaRepository.findAll(sort);
 		if (lista==null) {
 			return ResponseEntity.notFound().build();
