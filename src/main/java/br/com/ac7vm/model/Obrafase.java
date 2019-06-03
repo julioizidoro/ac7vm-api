@@ -29,8 +29,18 @@ public class Obrafase implements Serializable {
     private String descricao;
     @Column(name = "tempomedio")
     private Integer tempomedio;
+    @Column(name = "conta")
+    private String conta;
 
-    public Obrafase() {
+    public String getConta() {
+		return conta;
+	}
+
+	public void setConta(String conta) {
+		this.conta = conta;
+	}
+
+	public Obrafase() {
     }
 
     public Obrafase(Integer idobrafase) {

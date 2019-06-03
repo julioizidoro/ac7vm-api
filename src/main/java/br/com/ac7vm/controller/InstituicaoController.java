@@ -28,7 +28,7 @@ public class InstituicaoController {
 	@Autowired
 	private InstituicaoRepository instituicaoResository;
 	
-	@GetMapping("listar/{tipo}")
+	@GetMapping("listar/tipo/{tipo}")
 	public ResponseEntity<Optional<List<Instituicao>>> listar(@PathVariable("tipo") String tipo) {
 		Optional<List<Instituicao>> lista = instituicaoResository.findByTipoOrderByNome(tipo);
 		if (lista==null) {
@@ -38,9 +38,19 @@ public class InstituicaoController {
 		return ResponseEntity.ok(lista);
 	}
 	
-	@GetMapping("listar/{nome}/email")
+	@GetMapping("listar/{nome}/{email}")
 	public ResponseEntity<Optional<List<Instituicao>>> listar(@PathVariable("nome") String nome, @PathVariable("email") String email) {
 		Optional<List<Instituicao>> lista = instituicaoResository.findByNomeContainingOrEmailContainingOrderByNome(nome, email);
+		if (lista==null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(lista);
+	}
+	
+	@GetMapping("listar/{nome}")
+	public ResponseEntity<Optional<List<Instituicao>>> listarNome(@PathVariable("nome") String nome) {
+		Optional<List<Instituicao>> lista = instituicaoResository.findByNomeContainingOrderByNome(nome);
 		if (lista==null) {
 			return ResponseEntity.notFound().build();
 		}

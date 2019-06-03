@@ -11,6 +11,7 @@ public interface ServicoRepository extends JpaRepository<Servico, Integer>{
 	
 	Optional<List<Servico>> findByDescricaoContainingOrderByDescricao(String Descricao);
 	Optional<Servico> findById(int id);
+	Optional<List<Servico>> findByContaContainingOrderByDescricao(String conta);
 	List<Servico> findAll();
 
 }

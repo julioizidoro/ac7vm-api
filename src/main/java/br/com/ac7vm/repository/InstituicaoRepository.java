@@ -12,5 +12,6 @@ public interface InstituicaoRepository extends JpaRepository<Instituicao, Intege
 	
 	Optional<List<Instituicao>> findByTipoOrderByNome(String Tipo);
 	Optional<List<Instituicao>> findByNomeContainingOrEmailContainingOrderByNome(String Nome, String Email);
+	Optional<List<Instituicao>> findByNomeContainingOrderByNome(String Nome);
 
 }

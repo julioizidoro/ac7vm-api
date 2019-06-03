@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ac7vm.model.Obrafase;
 import br.com.ac7vm.model.Servico;
 import br.com.ac7vm.repository.ServicoRepository;
 
@@ -41,6 +42,16 @@ public class ServicoController {
 		return ResponseEntity.ok(lista);
 	}
 	
+	@GetMapping("conta/{conta}")
+	public ResponseEntity<Optional<List<Servico>>> pesquisarConta(@PathVariable("conta") String conta) {
+		Optional<List<Servico>> lista = servicoRepository.findByContaContainingOrderByDescricao(conta);
+		if (lista==null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(lista);
+	}
+	
 	@GetMapping("id/{id}")
 	public ResponseEntity<Optional<Servico>> pesquisar(@PathVariable("id") int id) {
 		Optional<Servico> lista = servicoRepository.findById(id);
@@ -54,7 +65,7 @@ public class ServicoController {
 	@GetMapping
 	@Cacheable("consultaServicos")
 	public ResponseEntity<List<Servico>> listar() {
-		Sort sort = new Sort(Sort.Direction.ASC, "Nome");
+		Sort sort = new Sort(Sort.Direction.ASC, "descricao");
 		List<Servico> lista = servicoRepository.findAll(sort);
 		if (lista==null) {
 			return ResponseEntity.notFound().build();

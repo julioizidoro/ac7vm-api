@@ -31,11 +31,21 @@ import br.com.ac7vm.repository.ObraFaseRepository;
 public class ObraFaseController {
 	
 	@Autowired
-	private ObraFaseRepository obraFaseRepository;
+	private ObraFaseRepository obraFaseRepository; 
 	
 	@GetMapping("descricao/{descricao}")
-	public ResponseEntity<Optional<List<Obrafase>>> pesquisar(@PathVariable("descricao") String descricao) {
+	public ResponseEntity<Optional<List<Obrafase>>> pesquisarDescricao(@PathVariable("descricao") String descricao) {
 		Optional<List<Obrafase>> lista = obraFaseRepository.findByDescricaoContainingOrderByDescricao(descricao);
+		if (lista==null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(lista);
+	}
+	
+	@GetMapping("conta/{conta}")
+	public ResponseEntity<Optional<List<Obrafase>>> pesquisarConta(@PathVariable("conta") String conta) {
+		Optional<List<Obrafase>> lista = obraFaseRepository.findByContaContainingOrderByDescricao(conta);
 		if (lista==null) {
 			return ResponseEntity.notFound().build();
 		}

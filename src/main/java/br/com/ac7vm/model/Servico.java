@@ -27,6 +27,9 @@ public class Servico implements Serializable {
     @Size(max = 100)
     @Column(name = "descricao")
     private String descricao;
+    @Size(max = 10)
+    @Column(name = "conta")
+    private String conta;
 
     public Servico() {
     }
@@ -51,7 +54,15 @@ public class Servico implements Serializable {
         this.descricao = descricao;
     }
 
-    @Override
+    public String getConta() {
+		return conta;
+	}
+
+	public void setConta(String conta) {
+		this.conta = conta;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (idservico != null ? idservico.hashCode() : 0);
