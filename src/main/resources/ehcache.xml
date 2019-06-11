@@ -36,4 +36,8 @@
 		maxEntriesLocalHeap="200"
 		timeToLiveSeconds="3600">
 	</cache>
+	<cache name="consultaBens" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+	</cache>
 </ehcache>

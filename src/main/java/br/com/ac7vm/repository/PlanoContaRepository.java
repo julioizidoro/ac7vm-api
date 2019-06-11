@@ -13,6 +13,8 @@ public interface PlanoContaRepository extends JpaRepository<Planoconta, Integer>
 	
 	@Query("select p from Planoconta p where p.grupoplanoconta.idgrupoplanoconta= :grupo order by p.descricao")
 	Optional<List<Planoconta>> findGrupo(@Param("grupo") int grupo);
+	@Query("select p from Planoconta p where p.lancamentobens=true Order by p.descricao")
+	Optional<List<Planoconta>> findLancamentoBens();
 	Optional<List<Planoconta>> findByContaContainingOrderByDescricao(String conta);
 	Optional<List<Planoconta>> findByDescricaoContainingOrderByDescricao(String Descricao);
 	Optional<Planoconta> findById(int id);

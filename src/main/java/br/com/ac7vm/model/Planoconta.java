@@ -35,7 +35,11 @@ public class Planoconta implements Serializable {
     @JoinColumn(name = "grupoplanoconta_idgrupoplanoconta", referencedColumnName = "idgrupoplanoconta")
     @ManyToOne(optional = false)
     private Grupoplanoconta grupoplanoconta;
+    @Column(name = "lancamentobens")
+    private boolean lancamentobens;
 
+    
+    
     public Planoconta() {
     }
 
@@ -75,7 +79,15 @@ public class Planoconta implements Serializable {
         this.grupoplanoconta = grupoplanoconta;
     }
 
-    @Override
+    public boolean isLancamentobens() {
+		return lancamentobens;
+	}
+
+	public void setLancamentobens(boolean lancamentobens) {
+		this.lancamentobens = lancamentobens;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (idplanoconta != null ? idplanoconta.hashCode() : 0);
