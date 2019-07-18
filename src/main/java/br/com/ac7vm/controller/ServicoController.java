@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ac7vm.model.Obrafase;
 import br.com.ac7vm.model.Servico;
 import br.com.ac7vm.repository.ServicoRepository;
 
