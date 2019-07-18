@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import br.com.ac7vm.model.Instituicao;
 import br.com.ac7vm.model.Obra;
 
 @Entity
