@@ -40,4 +40,11 @@
 		maxEntriesLocalHeap="200"
 		timeToLiveSeconds="3600">
 	</cache>
+	<cache name="consultaFormaPagamento" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+		<cache name="consultaContas" 
+		maxEntriesLocalHeap="200"
+		timeToLiveSeconds="3600">
+	</cache>
 </ehcache>

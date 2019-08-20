@@ -68,7 +68,7 @@ public class InstituicaoController {
 		return ResponseEntity.ok(instituicao);
 	}
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Instituicao salvar(@Valid @RequestBody Instituicao instituicao) {
 		return instituicaoResository.save(instituicao);

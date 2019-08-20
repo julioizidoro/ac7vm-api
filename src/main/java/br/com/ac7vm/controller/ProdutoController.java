@@ -66,7 +66,7 @@ public class ProdutoController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	@CachePut("consultaProdutos")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produto salvar(@Valid @RequestBody Produto Produto) {

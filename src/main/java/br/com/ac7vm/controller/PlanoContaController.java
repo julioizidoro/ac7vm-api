@@ -94,7 +94,7 @@ public class PlanoContaController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	@CachePut("consultaPlanoContas")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Planoconta salvar(@Valid @RequestBody Planoconta Planoconta) {

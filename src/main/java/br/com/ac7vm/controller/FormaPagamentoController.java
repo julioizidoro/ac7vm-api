@@ -1,0 +1,34 @@
+package br.com.ac7vm.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.ac7vm.model.Formapagamento;
+import br.com.ac7vm.repository.FormaPagamentoRepository;
+
+@CrossOrigin
+@RestController	
+@RequestMapping("/formapagamento")
+public class FormaPagamentoController {
+	
+	@Autowired
+	private FormaPagamentoRepository formaPagamentoRepository;
+	
+	@GetMapping
+	@Cacheable("consultaFormaPagamento")
+	public ResponseEntity<Optional<List<Formapagamento>>> listar() {
+		Optional<List<Formapagamento>> lista = formaPagamentoRepository.findAllForma();
+		if (lista==null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(lista);
+	}
+}

@@ -1,4 +1,4 @@
-package br.com.ac7vm.controller;
+package br.com.ac7vm.model;
 
 import java.io.Serializable;
 
@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-
-import br.com.ac7vm.model.Obra;
 
 @Entity
 @Table(name = "unidade")

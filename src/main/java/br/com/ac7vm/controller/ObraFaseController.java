@@ -76,7 +76,7 @@ public class ObraFaseController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	@CachePut("consultaFases")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Obrafase salvar(@Valid @RequestBody Obrafase Obrafase) {

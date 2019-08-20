@@ -64,7 +64,7 @@ public class ObraController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	@CachePut("consultaObras")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Obra salvar(@Valid @RequestBody Obra Obra) {

@@ -74,7 +74,7 @@ public class ServicoController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	@CachePut("consultaServicos")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Servico salvar(@Valid @RequestBody Servico Servico) {

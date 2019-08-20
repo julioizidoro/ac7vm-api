@@ -74,7 +74,7 @@ public class GrupoPlanoContaController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	@CachePut("consultaGrupoContas")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Grupoplanoconta salvar(@Valid @RequestBody Grupoplanoconta Grupoplanoconta) {

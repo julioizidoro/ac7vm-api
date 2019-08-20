@@ -46,6 +46,9 @@ public class Bens implements Serializable {
     @JoinColumn(name = "planoconta_idplanoconta", referencedColumnName = "idplanoconta")
     @OneToOne(optional = false)
     private Planoconta planoconta;
+    @JoinColumn(name = "instituicao_idinstituicao", referencedColumnName = "idinstituicao")
+    @OneToOne(optional = false)
+    private Instituicao instituicao;
     
 	public Bens() {
 	
@@ -121,6 +124,14 @@ public class Bens implements Serializable {
 
 	public void setPlanoconta(Planoconta planoconta) {
 		this.planoconta = planoconta;
+	}
+
+	public Instituicao getInstituicao() {
+		return instituicao;
+	}
+
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
 	}
 
 	@Override

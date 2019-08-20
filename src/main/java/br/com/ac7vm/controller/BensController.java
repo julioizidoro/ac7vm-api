@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ac7vm.model.Bens;
+import br.com.ac7vm.model.Obra;
 import br.com.ac7vm.repository.BensRepository;
 import br.com.ac7vm.util.Conversor;
 
@@ -67,13 +68,6 @@ public class BensController {
 		return ResponseEntity.ok(lista);
 	}
 	
-	@PostMapping
-	@CachePut("consultaBens")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Bens salvar(@Valid @RequestBody Bens bens) {
-		return bensRepository.save(bens);
-	}
-	
 	@GetMapping("id/{id}")
 	public ResponseEntity<Optional<Bens>> pesquisar(@PathVariable("id") int id) {
 		Optional<Bens> bem = bensRepository.findById(id);
@@ -82,6 +76,13 @@ public class BensController {
 		}
 		
 		return ResponseEntity.ok(bem);
+	}
+	
+	@PostMapping("/salvar")
+	@CachePut("consultaBens")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Bens salvar(@Valid @RequestBody Bens bens) {
+		return bensRepository.save(bens);
 	}
 
 }

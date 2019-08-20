@@ -48,9 +48,6 @@ public class Instituicao {
 	@Column(name = "datacadastro")
 	@Temporal(TemporalType.DATE)
 	private Date datacadastro;
-	@Column(name = "segundo")
-	private boolean segundo;
-
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "instituicao")
 	private Clientesocio clientesocio;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "instituicao")
@@ -170,14 +167,6 @@ public class Instituicao {
 
 	public void setClientecomplemento(Clientecomplemento clientecomplemento) {
 		this.clientecomplemento = clientecomplemento;
-	}
-
-	public boolean isSegundo() {
-		return segundo;
-	}
-
-	public void setSegundo(boolean segundo) {
-		this.segundo = segundo;
 	}
 
 	public Clientesegundo getClientesegundo() {
