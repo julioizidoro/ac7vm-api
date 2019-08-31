@@ -25,7 +25,7 @@ import br.com.ac7vm.repository.PlanoContaRepository;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/planocontas")
+@RequestMapping("/api/planocontas")
 public class PlanoContaController {
 	
 	@Autowired

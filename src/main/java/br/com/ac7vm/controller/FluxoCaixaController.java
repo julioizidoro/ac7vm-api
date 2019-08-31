@@ -18,7 +18,7 @@ import br.com.ac7vm.util.Conversor;
 
 @CrossOrigin
 @RestController	
-@RequestMapping("/fluxocaixa")
+@RequestMapping("/api/fluxocaixa")
 public class FluxoCaixaController {
 	
 	@Autowired

@@ -25,7 +25,7 @@ import br.com.ac7vm.repository.ObraRepository;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/obras")
+@RequestMapping("/api/obras")
 public class ObraController {
 	
 	@Autowired

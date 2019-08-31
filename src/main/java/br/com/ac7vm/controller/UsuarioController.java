@@ -23,7 +23,7 @@ import br.com.ac7vm.repository.UsuarioRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/usuarios")
 public class UsuarioController {
 	
 	@Autowired

@@ -30,7 +30,7 @@ import br.com.ac7vm.util.Conversor;
 
 @CrossOrigin
 @RestController	
-@RequestMapping("api/cr")
+@RequestMapping("/api/cr")
 public class ContasReceberController {
 	
 	@Autowired

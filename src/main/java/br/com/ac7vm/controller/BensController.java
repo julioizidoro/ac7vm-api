@@ -26,7 +26,7 @@ import br.com.ac7vm.util.Conversor;
 
 @CrossOrigin
 @RestController	
-@RequestMapping("/bens")
+@RequestMapping("/api/bens")
 public class BensController {
 	
 	@Autowired

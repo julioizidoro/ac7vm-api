@@ -22,7 +22,7 @@ import br.com.ac7vm.repository.InstituicaoRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/instituicao")
+@RequestMapping("/api/instituicao")
 public class InstituicaoController {
 	
 	@Autowired

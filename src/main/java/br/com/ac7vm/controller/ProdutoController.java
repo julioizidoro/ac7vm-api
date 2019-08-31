@@ -27,7 +27,7 @@ import br.com.ac7vm.repository.ProdutoRepository;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/api/produtos")
 public class ProdutoController {
 	
 	@Autowired

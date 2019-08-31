@@ -25,7 +25,7 @@ import br.com.ac7vm.repository.ServicoRepository;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/servicos")
+@RequestMapping("/api/servicos")
 public class ServicoController {
 	
 	@Autowired

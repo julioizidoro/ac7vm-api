@@ -16,7 +16,7 @@ import br.com.ac7vm.repository.FormaPagamentoRepository;
 
 @CrossOrigin
 @RestController	
-@RequestMapping("/formapagamento")
+@RequestMapping("/api/formapagamento")
 public class FormaPagamentoController {
 	
 	@Autowired
