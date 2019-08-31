@@ -41,8 +41,7 @@ public class ContasPagarController {
 	private FluxoContasRepository fluxoContasRepository;
 	
 	//Consulta por ID
-	@GetMapping("/:id")
-	@Cacheable("consultaContasReceber")
+	@GetMapping("/id/{id}")
 	public ResponseEntity<Optional<Contas>> getId(@PathVariable("id") int id) {
 	Optional<Contas> conta = contasRepository.findById(id);
 		if (conta==null) {
@@ -53,7 +52,7 @@ public class ContasPagarController {
 	
 	//Consulta Inicial
 	@GetMapping("/")
-	@Cacheable("consultaContasReceber")
+	@Cacheable("consultaContasPagar")
 	public ResponseEntity<Optional<List<Contas>>> listarCR() {
 		Conversor c = new Conversor();
 		Date data = c.SomarDiasData(new Date(), 90);
@@ -65,8 +64,7 @@ public class ContasPagarController {
 	}
 	
 	//Consulta Documento
-	@GetMapping("/:documento")
-	@Cacheable("consultaContasReceber")
+	@Cacheable("consultaContasPagar")
 	public ResponseEntity<Optional<List<Contas>>>  findAllContasDocument(@PathVariable("documento") String documento) {
 		Optional<List<Contas>> lista = contasRepository.findAllContasDocumento(documento, "p");
 		if (lista==null) {
@@ -76,8 +74,7 @@ public class ContasPagarController {
 	}
 	
 	//Consulta Nome todas
-	@GetMapping("nometodas/:nome")
-	@Cacheable("consultaContasReceber")
+	@GetMapping("nometodas/{nome}")
 	public ResponseEntity<Optional<List<Contas>>>  findAllContasNomeTodas(@PathVariable("nome") String nome) {
 		if (nome.equalsIgnoreCase("@")){
 			nome = "";
@@ -90,8 +87,7 @@ public class ContasPagarController {
 	}
 	
 	//Consulta Nome Pagar
-	@GetMapping("nomepagar/:nome")
-	@Cacheable("consultaContasReceber")
+	@GetMapping("nomepagar/{nome}")
 	public ResponseEntity<Optional<List<Contas>>>  findAllContasNomePagar(@PathVariable("nome") String nome) {
 		if (nome.equalsIgnoreCase("@")){
 			nome = "";
@@ -104,8 +100,7 @@ public class ContasPagarController {
 	}
 		
 	//Consulta Nome Pagas
-	@GetMapping("nomepagas/:nome")
-	@Cacheable("consultaContasReceber")
+	@GetMapping("nomepagas/{nome}")
 	public ResponseEntity<Optional<List<Contas>>>  findAllContasNomePagas(@PathVariable("nome") String nome) {
 		if (nome.equalsIgnoreCase("@")){
 			nome = "";
@@ -118,8 +113,7 @@ public class ContasPagarController {
 	}
 	
 	//Consulta Data Vencimento todas
-	@GetMapping("dvtodas/:datainicial/:datafinal/:nome")
-	@Cacheable("consultaContasReceber")
+	@GetMapping("dvtodas/{datainicial}/{datafinal}/{nome}")
 	public ResponseEntity<Optional<List<Contas>>>  findAllContasDataVencimentoTodas(@PathVariable("datainicial") Date datainicial, @PathVariable("datafinal") Date datafinal, @PathVariable("nome") String nome) {
 		if (nome.equalsIgnoreCase("@")){
 			nome = "";
@@ -132,8 +126,7 @@ public class ContasPagarController {
 	}
 	
 	//Consulta Data Vencimento pagar
-	@GetMapping("dvtodas/:datainicial/:datafinal/:nome")
-	@Cacheable("consultaContasReceber")
+	@GetMapping("dvpagar/{datainicial}/{datafinal}/{nome}")
 	public ResponseEntity<Optional<List<Contas>>>  findAllContasDataVencimentoPagar(@PathVariable("datainicial") Date datainicial, @PathVariable("datafinal") Date datafinal, @PathVariable("nome") String nome) {
 		if (nome.equalsIgnoreCase("@")){
 			nome = "";
@@ -146,8 +139,7 @@ public class ContasPagarController {
 	}
 	
 	//Consulta Data Vencimento pagas
-	@GetMapping("dvtodas/:datainicial/:datafinal/:nome")
-	@Cacheable("consultaContasReceber")
+	@GetMapping("dvpagas/{datainicial}/{datafinal}/{nome}")
 	public ResponseEntity<Optional<List<Contas>>>  findAllContasDataVencimentoPagas(@PathVariable("datainicial") Date datainicial, @PathVariable("datafinal") Date datafinal, @PathVariable("nome") String nome) {
 		if (nome.equalsIgnoreCase("@")){
 			nome = "";
