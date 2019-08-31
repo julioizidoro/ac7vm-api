@@ -166,8 +166,8 @@ public class ContasPagarController {
 	public Contas salvar(@Valid @RequestBody Contas conta) {
 		conta = contasRepository.save(conta);
 		Fluxocaixa fluxoCaixa = fluxoCaixaRepository.findFluxoCaixa(conta.getDatapagamento());
-		fluxoCaixa.setEntradas(fluxoCaixa.getEntradas() + conta.getValorpago());
-		fluxoCaixa.setSaldoatual(fluxoCaixa.getSaldoatual() + conta.getValorpago());
+		fluxoCaixa.setEntradas(fluxoCaixa.getEntradas() - conta.getValorpago());
+		fluxoCaixa.setSaldoatual(fluxoCaixa.getSaldoatual() - conta.getValorpago());
 		fluxoCaixa = fluxoCaixaRepository.save(fluxoCaixa);
 		Fluxocontas fluxoContas = new Fluxocontas();
 		fluxoContas.setContas(conta);
@@ -183,8 +183,8 @@ public class ContasPagarController {
 	public Contas baixar(@Valid @RequestBody Contas conta) {
 		conta = contasRepository.save(conta);
 		Fluxocaixa fluxoCaixa = fluxoCaixaRepository.findFluxoCaixa(conta.getDatapagamento());
-		fluxoCaixa.setEntradas(fluxoCaixa.getEntradas() + conta.getValorpago());
-		fluxoCaixa.setSaldoatual(fluxoCaixa.getSaldoatual() + conta.getValorpago());
+		fluxoCaixa.setEntradas(fluxoCaixa.getEntradas() - conta.getValorpago());
+		fluxoCaixa.setSaldoatual(fluxoCaixa.getSaldoatual() - conta.getValorpago());
 		fluxoCaixa = fluxoCaixaRepository.save(fluxoCaixa);
 		Fluxocontas fluxoContas = new Fluxocontas();
 		fluxoContas.setContas(conta);
