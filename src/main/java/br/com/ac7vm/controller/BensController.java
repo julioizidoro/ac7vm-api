@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ac7vm.model.Bens;
-import br.com.ac7vm.model.Obra;
 import br.com.ac7vm.repository.BensRepository;
 import br.com.ac7vm.util.Conversor;
 
