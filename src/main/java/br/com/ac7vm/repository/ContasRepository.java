@@ -43,7 +43,7 @@ public interface ContasRepository extends JpaRepository<Contas, Integer>{
 	Optional<List<Contas>> findAllContasDataVencimentoPagar(@Param("nome") String nome, @Param("datainicio") Date datainicio, @Param("datafinal") Date datafina, @Param("tipo") String tipo);
 	
 	//Consulta data vencimento + Paggas + nome
-	@Query("Select c from Contas c where c.instituicao.nome like CONCAT('%', :nome, '%') and c.datavencimento>= :datainicio and c.datavencimento<= :datafinal and c.tipo= :tipo and c.valorpagp>0 order by c.datavencimento")
+	@Query("Select c from Contas c where c.instituicao.nome like CONCAT('%', :nome, '%') and c.datavencimento>= :datainicio and c.datavencimento<= :datafinal and c.tipo= :tipo and c.valorpago>0 order by c.datavencimento")
 	Optional<List<Contas>> findAllContasDataVencimentoPagas(@Param("nome") String nome, @Param("datainicio") Date datainicio, @Param("datafinal") Date datafina, @Param("tipo") String tipo);
 	
 
