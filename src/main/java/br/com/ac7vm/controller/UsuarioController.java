@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ac7vm.model.Usuario;
 import br.com.ac7vm.repository.UsuarioRepository;
+import br.com.ac7vm.util.Criptografia;
 
 @CrossOrigin
 @RestController
@@ -42,7 +43,9 @@ public class UsuarioController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario salvar(@Valid @RequestBody Usuario usuario) {
-		usuario.setSenha(usuario.getSenha());
+		Criptografia criptografia = new Criptografia();
+		String senha = (criptografia.encript(usuario.getSenha()));
+		usuario.setSenha(senha);
 		return usuarioRepository.save(usuario);
 	}
 	
@@ -59,6 +62,8 @@ public class UsuarioController {
 	
 	@GetMapping("/logar/{login}/{senha}")
 	public ResponseEntity<Usuario> buscar(@PathVariable("login") String login, @PathVariable("senha") String senha) {
+		Criptografia criptografia = new Criptografia();
+		senha = (criptografia.encript(senha));
 		Usuario usuario = usuarioRepository.findByLoginAndSenhaAndSituacao(login, senha, true);
 		
 		if (usuario==null) {
