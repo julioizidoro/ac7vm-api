@@ -51,7 +51,7 @@ public class ContasPagarController {
 	}
 	
 	//Consulta Inicial
-	@GetMapping("/")
+	@GetMapping
 	@Cacheable("consultaContasPagar")
 	public ResponseEntity<Optional<List<Contas>>> listarCR() {
 		Conversor c = new Conversor();

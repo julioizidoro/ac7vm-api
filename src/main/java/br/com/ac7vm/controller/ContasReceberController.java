@@ -51,7 +51,7 @@ public class ContasReceberController {
 	}
 	
 	//Consulta Inicial
-	@GetMapping("/")
+	@GetMapping
 	@Cacheable("consultaContasReceber")
 	public ResponseEntity<Optional<List<Contas>>> listarCR() {
 		Conversor c = new Conversor();
@@ -126,7 +126,7 @@ public class ContasReceberController {
 	}
 	
 	//Consulta Data Vencimento pagar
-	@GetMapping("dvtodas/{datainicial}/{datafinal}/{nome}")
+	@GetMapping("dvreeceber/{datainicial}/{datafinal}/{nome}")
 	public ResponseEntity<Optional<List<Contas>>>  findAllContasDataVencimentoPagar(@PathVariable("datainicial") Date datainicial, @PathVariable("datafinal") Date datafinal, @PathVariable("nome") String nome) {
 		if (nome.equalsIgnoreCase("@")){
 			nome = "";
@@ -139,7 +139,7 @@ public class ContasReceberController {
 	}
 	
 	//Consulta Data Vencimento pagas
-	@GetMapping("dvtodas/{datainicial}/{datafinal}/{nome}")
+	@GetMapping("dvrecebidas/{datainicial}/{datafinal}/{nome}")
 	public ResponseEntity<Optional<List<Contas>>>  findAllContasDataVencimentoPagas(@PathVariable("datainicial") Date datainicial, @PathVariable("datafinal") Date datafinal, @PathVariable("nome") String nome) {
 		if (nome.equalsIgnoreCase("@")){
 			nome = "";
