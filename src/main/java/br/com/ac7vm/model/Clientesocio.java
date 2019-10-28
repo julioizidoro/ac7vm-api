@@ -1,5 +1,7 @@
 package br.com.ac7vm.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,28 +12,31 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-public class Clientesocio {
+public class Clientesocio implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idclientesocio;
-	@NotEmpty
+	private Integer idclientesocio;
 	@Size(max = 100)
 	@Column(name = "nome")
 	private String nome;
-	@NotEmpty
 	@Size(max = 14)
 	@Column(name = "cpf")
 	private String cpf;
-	@NotEmpty
 	@Size(max = 14)
 	@Column(name = "fonecelular")
 	private String fonecelular;
-	@NotEmpty
 	@Size(max = 100)
 	@Column(name = "email")
 	private String email;
+	@JsonBackReference
 	@JoinColumn(name = "instituicao_idinstituicao", referencedColumnName = "idinstituicao")
     @OneToOne(optional = false)
     private Instituicao instituicao;
@@ -40,13 +45,19 @@ public class Clientesocio {
 		
 	}
 
-	public int getIdclientesocio() {
+	
+
+	public Integer getIdclientesocio() {
 		return idclientesocio;
 	}
 
-	public void setIdclientesocio(int idclientesocio) {
+
+
+	public void setIdclientesocio(Integer idclientesocio) {
 		this.idclientesocio = idclientesocio;
 	}
+
+
 
 	public String getNome() {
 		return nome;

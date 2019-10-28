@@ -51,15 +51,7 @@ public class Contas implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date datapagamento;
     @Column(name = "valorpago")
-    private Float valorpago;
-    public Float getNumeroparcela() {
-		return numeroparcela;
-	}
-
-	public void setNumeroparcela(Float numeroparcela) {
-		this.numeroparcela = numeroparcela;
-	}
-
+    private Float valorpago;  
 	@Size(max = 200)
     @Column(name = "observacao")
     private String observacao;
@@ -80,61 +72,187 @@ public class Contas implements Serializable{
 		
 	}
 
+	
+
 	public Integer getIdcontas() {
 		return idcontas;
 	}
+
+
+
+	public void setIdcontas(Integer idcontas) {
+		this.idcontas = idcontas;
+	}
+
+
 
 	public String getDocumento() {
 		return documento;
 	}
 
+
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
+
+
 	public Date getDataemissao() {
 		return dataemissao;
 	}
+
+
+
+	public void setDataemissao(Date dataemissao) {
+		this.dataemissao = dataemissao;
+	}
+
+
 
 	public Date getDatavencimento() {
 		return datavencimento;
 	}
 
+
+
+	public void setDatavencimento(Date datavencimento) {
+		this.datavencimento = datavencimento;
+	}
+
+
+
+	public Float getNumeroparcela() {
+		return numeroparcela;
+	}
+
+
+
+	public void setNumeroparcela(Float numeroparcela) {
+		this.numeroparcela = numeroparcela;
+	}
+
+
+
 	public Float getValorparcela() {
 		return valorparcela;
 	}
+
+
+
+	public void setValorparcela(Float valorparcela) {
+		this.valorparcela = valorparcela;
+	}
+
+
 
 	public Float getDesconto() {
 		return desconto;
 	}
 
+
+
+	public void setDesconto(Float desconto) {
+		this.desconto = desconto;
+	}
+
+
+
 	public Float getJuros() {
 		return juros;
 	}
+
+
+
+	public void setJuros(Float juros) {
+		this.juros = juros;
+	}
+
+
 
 	public Date getDatapagamento() {
 		return datapagamento;
 	}
 
+
+
+	public void setDatapagamento(Date datapagamento) {
+		this.datapagamento = datapagamento;
+	}
+
+
+
 	public Float getValorpago() {
 		return valorpago;
 	}
+
+
+
+	public void setValorpago(Float valorpago) {
+		this.valorpago = valorpago;
+	}
+
+
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+
 
 	public String getTipo() {
 		return tipo;
 	}
 
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+
+
 	public Planoconta getPlanoconta() {
 		return planoconta;
 	}
+
+
+
+	public void setPlanoconta(Planoconta planoconta) {
+		this.planoconta = planoconta;
+	}
+
+
 
 	public Instituicao getInstituicao() {
 		return instituicao;
 	}
 
+
+
+	public void setInstituicao(Instituicao instituicao) {
+		this.instituicao = instituicao;
+	}
+
+
+
 	public Formapagamento getFormapagamento() {
 		return formapagamento;
 	}
 
+
+
 	public void setFormapagamento(Formapagamento formapagamento) {
 		this.formapagamento = formapagamento;
 	}
+
+
 
 	@Override
 	public int hashCode() {

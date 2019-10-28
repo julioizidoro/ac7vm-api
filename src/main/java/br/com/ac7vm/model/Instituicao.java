@@ -1,5 +1,6 @@
 package br.com.ac7vm.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -11,15 +12,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-@Entity
-public class Instituicao {
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+@Entity
+public class Instituicao implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idinstituicao;
+	private Integer idinstituicao;
 	@NotEmpty
 	@Size(max = 100)
 	@Column(name = "nome")
@@ -48,6 +57,8 @@ public class Instituicao {
 	@Column(name = "datacadastro")
 	@Temporal(TemporalType.DATE)
 	private Date datacadastro;
+	@Column(name = "segundo")
+	private boolean segundo;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "instituicao")
 	private Clientesocio clientesocio;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "instituicao")
@@ -58,7 +69,7 @@ public class Instituicao {
 	private Clientecomplemento clientecomplemento;
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "instituicao")
 	private  Clientesegundo clientesegundo;
-
+	
 	public Instituicao() {
 
 	}
@@ -175,6 +186,14 @@ public class Instituicao {
 
 	public void setClientesegundo(Clientesegundo clientesegundo) {
 		this.clientesegundo = clientesegundo;
+	}
+
+	public boolean isSegundo() {
+		return segundo;
+	}
+
+	public void setSegundo(boolean segundo) {
+		this.segundo = segundo;
 	}
 
 	@Override

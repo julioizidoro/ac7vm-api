@@ -13,18 +13,18 @@ import br.com.ac7vm.model.Contas;
 
 public interface ContasRepository extends JpaRepository<Contas, Integer>{
 	
-	//consulta por ID
+	//consulta por ID ok
 	Optional<Contas> findById(int id);
 	
-	//Consulta inicial
+	//Consulta inicial ok
 	@Query("Select c from Contas c where c.datavencimento<= :data and c.tipo= :tipo and c.datapagamento is NULL order by c.datavencimento")
 	Optional<List<Contas>> findAllContas(@Param("data") Date data, @Param("tipo") String tipo);
 			
-	//ConsultaDocumento
-	@Query("Select c from Contas c where c.documento<= :documento and c.tipo= :tipo order by c.datavencimento")
+	//ConsultaDocumento ok
+	@Query("Select c from Contas c where c.documento= :documento and c.tipo= :tipo order by c.datavencimento")
 	Optional<List<Contas>> findAllContasDocumento(@Param("documento") String documento, @Param("tipo") String tipo);	
 	
-	//Consulta nome todas
+	//Consulta nome todas 
 	@Query("Select c from Contas c where c.instituicao.nome like CONCAT('%', :nome, '%') and c.tipo= :tipo order by c.instituicao.nome")
 	Optional<List<Contas>> findAllContasNomeTodas(@Param("nome") String nome, @Param("tipo") String tipo);
 	

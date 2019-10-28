@@ -18,15 +18,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ac7vm.model.Instituicao;
-import br.com.ac7vm.repository.InstituicaoRepository;
+import br.com.ac7vm.repository.ClienteRepository;
+
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/instituicao")
-public class InstituicaoController {
+@RequestMapping("/api/clientes")
+public class ClienteController {
 	
 	@Autowired
-	private InstituicaoRepository instituicaoResository;
+	private ClienteRepository instituicaoResository;
 	
 	@GetMapping("listar/tipo/{tipo}")
 	public ResponseEntity<Optional<List<Instituicao>>> listar(@PathVariable("tipo") String tipo) {
@@ -40,7 +41,7 @@ public class InstituicaoController {
 	
 	@GetMapping("listar/{nome}/{email}")
 	public ResponseEntity<Optional<List<Instituicao>>> listar(@PathVariable("nome") String nome, @PathVariable("email") String email) {
-		Optional<List<Instituicao>> lista = instituicaoResository.findByNomeContainingOrEmailContainingOrderByNome(nome, email);
+		Optional<List<Instituicao>> lista = instituicaoResository.findByTipoAndNomeContainingOrEmailContainingOrderByNome("c", nome, email);
 		if (lista==null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -50,7 +51,7 @@ public class InstituicaoController {
 	
 	@GetMapping("listar/{nome}")
 	public ResponseEntity<Optional<List<Instituicao>>> listarNome(@PathVariable("nome") String nome) {
-		Optional<List<Instituicao>> lista = instituicaoResository.findByNomeContainingOrderByNome(nome);
+		Optional<List<Instituicao>> lista = instituicaoResository.findByTipoAndNomeContainingOrderByNome("c", nome);
 		if (lista==null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -70,7 +71,23 @@ public class InstituicaoController {
 	
 	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED)
+	//@CachePut(value="consultaAsoControle", key="#asoControle.idasocontrole")
 	public Instituicao salvar(@Valid @RequestBody Instituicao instituicao) {
+			if (instituicao.getClientecomplemento()!=null) {
+			instituicao.getClientecomplemento().setInstituicao(instituicao);
+		}
+		if (instituicao.getClienteenderecocomercial()!=null) {
+			instituicao.getClienteenderecocomercial().setInstituicao(instituicao);
+		}
+		if (instituicao.getClienteenderecoresidencial()!=null) {
+			instituicao.getClienteenderecoresidencial().setInstituicao(instituicao);
+		}
+		if (instituicao.getClientesegundo()!=null) {
+			instituicao.getClientesegundo().setInstituicao(instituicao);;
+		}
+		if (instituicao.getClientesocio()!=null) {
+			instituicao.getClientesocio().setInstituicao(instituicao);
+		}
 		return instituicaoResository.save(instituicao);
 	}
 

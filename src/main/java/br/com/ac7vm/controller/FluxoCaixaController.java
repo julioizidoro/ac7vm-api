@@ -26,16 +26,31 @@ public class FluxoCaixaController {
 	
 	@GetMapping
 	@Cacheable("consultaFluxoCaixa")
-	public ResponseEntity<Optional<List<Fluxocaixa>>> listar() {
+	public ResponseEntity<Optional<List<Fluxocaixa>>> listarData() {
 		Conversor c = new Conversor();
-		Date datainicial = c.SomarDiasData(new Date(), -10);
-		Date datafinal = c.SomarDiasData(new Date(), 10);	
-		Optional<List<Fluxocaixa>> lista = fluxoCaixaRepository.findAllFluxoCaixa(datainicial, datafinal);
+		Date datainicial = c.SomarDiasData(new Date(), -1);
+		Date datafinal = c.SomarDiasData(new Date(), 9);	
+		Optional<List<Fluxocaixa>> lista = fluxoCaixaRepository.findAllFluxoCaixaData(datainicial, datafinal);
 		if (lista==null) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(lista);
 	}
+	
+	@GetMapping("listar")
+	@Cacheable("consultaFluxoCaixa")
+	public ResponseEntity<Optional<List<Fluxocaixa>>> listarInicial() {
+		Conversor c = new Conversor();
+		Date datainicial = c.SomarDiasData(new Date(), -1);
+		Optional<List<Fluxocaixa>> lista = fluxoCaixaRepository.findAllFluxoCaixaInicial(datainicial);
+		if (lista==null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(lista);
+	}
+	
+	
+	
 	
 
 }

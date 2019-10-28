@@ -1,5 +1,6 @@
 package br.com.ac7vm.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,12 +14,18 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-public class Clientecomplemento {
+public class Clientecomplemento implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idclientecomplemento;
+	private Integer idclientecomplemento;
 	@Size(max = 50)
 	@Column(name = "nacionalidade")
 	private String  nacionalidade;
@@ -49,8 +56,9 @@ public class Clientecomplemento {
 	@Size(max = 1)
 	@Column(name = "sexo")
 	private String  sexo;
+	@JsonBackReference
 	@JoinColumn(name = "instituicao_idinstituicao", referencedColumnName = "idinstituicao")
-    @OneToOne(optional = false)
+	@OneToOne(optional = false)
     private Instituicao instituicao;
 	
 	public Clientecomplemento() {
@@ -59,15 +67,21 @@ public class Clientecomplemento {
 
 	
 
-	public int getIdclientecomplemento() {
+	
+
+	public Integer getIdclientecomplemento() {
 		return idclientecomplemento;
 	}
 
 
 
-	public void setIdclientecomplemento(int idclientecomplemento) {
+
+
+	public void setIdclientecomplemento(Integer idclientecomplemento) {
 		this.idclientecomplemento = idclientecomplemento;
 	}
+
+
 
 
 
