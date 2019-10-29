@@ -75,7 +75,7 @@ public class Obra implements Serializable {
     private String blocos;
     @Size(max = 2)
     @Column(name = "unidades")
-    private int unidade;
+    private int unidades;
 
     public Obra() {
     }
@@ -213,11 +213,11 @@ public class Obra implements Serializable {
 	}
 
 	public int getUnidade() {
-		return unidade;
+		return unidades;
 	}
 
-	public void setUnidade(int unidade) {
-		this.unidade = unidade;
+	public void setUnidade(int unidades) {
+		this.unidades = unidades;
 	}
 
 	@Override
