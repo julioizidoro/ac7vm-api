@@ -16,8 +16,8 @@ public interface FluxoCaixaRepository extends JpaRepository<Fluxocaixa, Integer>
 	Optional<List<Fluxocaixa>> findAllFluxoCaixaData(@Param("datainicial") Date datainicial, @Param("datafinal") Date datafinal);
 	
 	@Query(
-			value = "Select * from fluxocaixa f where f.data>= :datainicial order by f.data LIMIT 10",
-			nativeQuery = true)
+		value = "Select * from fluxocaixa f where f.data>= :datainicial order by f.data LIMIT 10",
+		nativeQuery = true)
 	Optional<List<Fluxocaixa>> findAllFluxoCaixaInicial(@Param("datainicial") Date datainicial);
 	
 	@Query("Select f from Fluxocaixa f where f.data= :data")
@@ -25,4 +25,7 @@ public interface FluxoCaixaRepository extends JpaRepository<Fluxocaixa, Integer>
 	
 	@Query("Select f from Fluxocaixa f where f.idfluxocaixa= :id")
 	Fluxocaixa getId(@Param("id") int id);
+	
+	@Query("Select f from Fluxocaixa f where f.data= :data")
+	Optional<List<Fluxocaixa>> findData(@Param("data") Date data);
 }

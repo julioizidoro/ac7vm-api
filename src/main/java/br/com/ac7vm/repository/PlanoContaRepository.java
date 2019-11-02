@@ -19,5 +19,9 @@ public interface PlanoContaRepository extends JpaRepository<Planoconta, Integer>
 	Optional<List<Planoconta>> findByDescricaoContainingOrderByDescricao(String Descricao);
 	Optional<Planoconta> findById(int id);
 	List<Planoconta> findAll();
+	
+	@Query("select p from Planoconta p where p.conta= :conta")
+	Planoconta findConta(@Param("conta") String conta);
+	
 
 }

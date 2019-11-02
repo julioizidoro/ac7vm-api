@@ -31,6 +31,7 @@ public class PlanoContaController {
 	@Autowired
 	private PlanoContaRepository planoContaRepository;
 	
+	
 	@GetMapping("descricao/{descricao}")
 	public ResponseEntity<Optional<List<Planoconta>>> pesquisarDescricao(@PathVariable("descricao") String descricao) {
 		Optional<List<Planoconta>> lista = planoContaRepository.findByDescricaoContainingOrderByDescricao(descricao);
@@ -100,5 +101,7 @@ public class PlanoContaController {
 	public Planoconta salvar(@Valid @RequestBody Planoconta Planoconta) {
 		return planoContaRepository.save(Planoconta);
 	}
+	
+	
 
 }

@@ -9,10 +9,12 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ac7vm.model.Fluxocaixa;
+import br.com.ac7vm.model.Instituicao;
 import br.com.ac7vm.repository.FluxoCaixaRepository;
 import br.com.ac7vm.util.Conversor;
 
@@ -47,6 +49,18 @@ public class FluxoCaixaController {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(lista);
+	}
+	
+	@GetMapping("data/{data}")
+	public ResponseEntity<Optional<List<Fluxocaixa>>> getId(@PathVariable("data") String data) {
+		Conversor c = new Conversor();
+		Date dataStart = c.ConvercaoStringData(data);
+		Optional<List<Fluxocaixa>> listaFluxoCaixa = fluxoCaixaRepository.findData(dataStart);
+		if (listaFluxoCaixa==null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(listaFluxoCaixa);
 	}
 	
 	

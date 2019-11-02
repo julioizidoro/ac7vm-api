@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -31,6 +33,9 @@ public class Obrafase implements Serializable {
     private Integer tempomedio;
     @Column(name = "conta")
     private String conta;
+    @JoinColumn(name = "planoconta_idplanoconta", referencedColumnName = "idplanoconta")
+    @ManyToOne(optional = false)
+    private Planoconta planoconta;
 
     public String getConta() {
 		return conta;
@@ -71,7 +76,15 @@ public class Obrafase implements Serializable {
         this.tempomedio = tempomedio;
     }
 
-    @Override
+    public Planoconta getPlanoconta() {
+		return planoconta;
+	}
+
+	public void setPlanoconta(Planoconta planoconta) {
+		this.planoconta = planoconta;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (idobrafase != null ? idobrafase.hashCode() : 0);

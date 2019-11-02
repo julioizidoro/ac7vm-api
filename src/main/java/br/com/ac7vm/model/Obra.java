@@ -52,7 +52,7 @@ public class Obra implements Serializable {
     @Size(max = 45)
     @Column(name = "cidade")
     private String cidade;
-    @Size(max = 8)
+    @Size(max = 9)
     @Column(name = "cep")
     private String cep;
     @Size(max = 2)
@@ -73,7 +73,6 @@ public class Obra implements Serializable {
     @Size(max = 5)
     @Column(name = "blocos")
     private String blocos;
-    @Size(max = 2)
     @Column(name = "unidades")
     private int unidades;
 

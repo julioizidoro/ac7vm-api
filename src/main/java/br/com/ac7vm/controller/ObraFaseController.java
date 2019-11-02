@@ -82,5 +82,4 @@ public class ObraFaseController {
 	public Obrafase salvar(@Valid @RequestBody Obrafase Obrafase) {
 		return obraFaseRepository.save(Obrafase);
 	}
-
 }

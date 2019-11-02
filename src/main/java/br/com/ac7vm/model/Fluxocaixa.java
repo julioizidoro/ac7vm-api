@@ -120,6 +120,22 @@ public class Fluxocaixa implements Serializable{
 		this.saidasprevistas = saidasprevistas;
 	}
 
+	public List<Fluxocontas> getFluxocontasList() {
+		return fluxocontasList;
+	}
+
+	public void setFluxocontasList(List<Fluxocontas> fluxocontasList) {
+		this.fluxocontasList = fluxocontasList;
+	}
+
+	public List<Fluxolancamento> getFluxolancamentoList() {
+		return fluxolancamentoList;
+	}
+
+	public void setFluxolancamentoList(List<Fluxolancamento> fluxolancamentoList) {
+		this.fluxolancamentoList = fluxolancamentoList;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

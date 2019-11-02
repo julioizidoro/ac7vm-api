@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "fluxocontas")
 public class Fluxocontas implements Serializable{
@@ -26,6 +28,7 @@ public class Fluxocontas implements Serializable{
     @Basic(optional = false)
     @Column(name = "idfluxocontas")
     private Integer idfluxocontas;
+	@JsonBackReference
 	@JoinColumn(name = "fluxocaixa_idfluxocaixa", referencedColumnName = "idfluxocaixa")
     @OneToOne(optional = false)
     private Fluxocaixa fluxocaixa;

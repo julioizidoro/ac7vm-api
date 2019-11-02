@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -30,6 +32,12 @@ public class Servico implements Serializable {
     @Size(max = 10)
     @Column(name = "conta")
     private String conta;
+    @JoinColumn(name = "obrafase_idobrafase", referencedColumnName = "idobrafase")
+    @ManyToOne(optional = false)
+    private Obrafase obrafase;
+    @JoinColumn(name = "planoconta_idplanoconta", referencedColumnName = "idplanoconta")
+    @ManyToOne(optional = false)
+    private Planoconta planoconta;
 
     public Servico() {
     }
@@ -60,6 +68,22 @@ public class Servico implements Serializable {
 
 	public void setConta(String conta) {
 		this.conta = conta;
+	}
+
+	public Planoconta getPlanoconta() {
+		return planoconta;
+	}
+
+	public void setPlanoconta(Planoconta planoconta) {
+		this.planoconta = planoconta;
+	}
+
+	public Obrafase getObrafase() {
+		return obrafase;
+	}
+
+	public void setObrafase(Obrafase obrafase) {
+		this.obrafase = obrafase;
 	}
 
 	@Override
