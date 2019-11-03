@@ -10,10 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Ac7vmApiApplication {
 	
-	@PostConstruct
-    public void init() {
-		TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
-    }
+	//@PostConstruct
+  //  public void init() {
+	//	TimeZone.setDefault(TimeZone.getTimeZone("America/Sao_Paulo"));
+  //  }
 
 	public static void main(String[] args) {
 		SpringApplication.run(Ac7vmApiApplication.class, args);
