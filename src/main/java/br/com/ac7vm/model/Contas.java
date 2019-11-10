@@ -40,7 +40,7 @@ public class Contas implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date datavencimento;
     @Column(name = "numeroparcela")
-    private Float numeroparcela;
+    private int numeroparcela;
     @Column(name = "valorparcela")
     private Float valorparcela;
     @Column(name = "desconto")
@@ -122,13 +122,15 @@ public class Contas implements Serializable{
 
 
 
-	public Float getNumeroparcela() {
+	
+
+	public int getNumeroparcela() {
 		return numeroparcela;
 	}
 
 
 
-	public void setNumeroparcela(Float numeroparcela) {
+	public void setNumeroparcela(int numeroparcela) {
 		this.numeroparcela = numeroparcela;
 	}
 

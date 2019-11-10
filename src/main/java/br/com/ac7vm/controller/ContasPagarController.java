@@ -53,7 +53,7 @@ public class ContasPagarController {
 	//Consulta Inicial
 	@GetMapping
 	@Cacheable("consultaContasPagar")
-	public ResponseEntity<Optional<List<Contas>>> listarCR() {
+	public ResponseEntity<Optional<List<Contas>>> listarCP() {
 		Conversor c = new Conversor();
 		Date data = c.SomarDiasData(new Date(), 90);
 		Optional<List<Contas>> lista = contasRepository.findAllContas(data, "p");
@@ -152,14 +152,23 @@ public class ContasPagarController {
 	}
 	
 	
+	
+	
 	@PostMapping("/salvar")
 	@CachePut("consultaContasReceber")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Contas salvar(@Valid @RequestBody Contas conta) {
 		conta = contasRepository.save(conta);
-		Fluxocaixa fluxoCaixa = fluxoCaixaRepository.findFluxoCaixa(conta.getDatapagamento());
-		fluxoCaixa.setEntradas(fluxoCaixa.getEntradas() - conta.getValorpago());
-		fluxoCaixa.setSaldoatual(fluxoCaixa.getSaldoatual() - conta.getValorpago());
+		Fluxocaixa fluxoCaixa = fluxoCaixaRepository.findFluxoCaixa(conta.getDatavencimento());
+		if (fluxoCaixa == null) {
+			fluxoCaixa = new Fluxocaixa();
+			fluxoCaixa.setData(conta.getDatavencimento());
+			fluxoCaixa.setEntradas(0.0f);
+			fluxoCaixa.setEntradasprevistas(0.0f);
+			fluxoCaixa.setSaidas(0.0f);
+			fluxoCaixa.setSaidasprevistas(0.0f);
+		}
+		fluxoCaixa.setSaidasprevistas(fluxoCaixa.getSaidasprevistas() + conta.getValorparcela());
 		fluxoCaixa = fluxoCaixaRepository.save(fluxoCaixa);
 		Fluxocontas fluxoContas = new Fluxocontas();
 		fluxoContas.setContas(conta);
@@ -175,13 +184,24 @@ public class ContasPagarController {
 	public Contas baixar(@Valid @RequestBody Contas conta) {
 		conta = contasRepository.save(conta);
 		Fluxocaixa fluxoCaixa = fluxoCaixaRepository.findFluxoCaixa(conta.getDatapagamento());
-		fluxoCaixa.setEntradas(fluxoCaixa.getEntradas() - conta.getValorpago());
-		fluxoCaixa.setSaldoatual(fluxoCaixa.getSaldoatual() - conta.getValorpago());
+		boolean novoFluxo = false;
+		if (fluxoCaixa == null) {
+			fluxoCaixa = new Fluxocaixa();
+			fluxoCaixa.setData(conta.getDatavencimento());
+			fluxoCaixa.setEntradas(0.0f);
+			fluxoCaixa.setEntradasprevistas(0.0f);
+			fluxoCaixa.setSaidas(0.0f);
+			fluxoCaixa.setSaidasprevistas(0.0f);
+			novoFluxo = true;
+		}
+		fluxoCaixa.setSaidas(fluxoCaixa.getSaidas() + conta.getValorpago());
 		fluxoCaixa = fluxoCaixaRepository.save(fluxoCaixa);
-		Fluxocontas fluxoContas = new Fluxocontas();
-		fluxoContas.setContas(conta);
-		fluxoContas.setFluxocaixa(fluxoCaixa);
-		fluxoContasRepository.save(fluxoContas);
+		if (novoFluxo) {
+			Fluxocontas fluxoContas = new Fluxocontas();
+			fluxoContas.setContas(conta);
+			fluxoContas.setFluxocaixa(fluxoCaixa);
+			fluxoContasRepository.save(fluxoContas);
+		}
 		return contasRepository.save(conta);
 	}
 

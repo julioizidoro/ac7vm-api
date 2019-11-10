@@ -62,7 +62,6 @@ public class FluxoLancamentoController {
 		Fluxocaixa fluxoCaixa = fluxoCaixaRepository.getId(fluxoLancamento.getFluxocaixa().getIdfluxocaixa());
 		fluxoCaixa.setEntradas(fluxoCaixa.getEntradas() + fluxoLancamento.getValorentrada());
 		fluxoCaixa.setSaidas(fluxoCaixa.getSaidas() + fluxoLancamento.getValorsaida());
-		fluxoCaixa.setSaldoatual((fluxoCaixa.getSaldoatual() + fluxoLancamento.getValorentrada()) - fluxoLancamento.getValorsaida());
 		fluxoCaixa = fluxoCaixaRepository.save(fluxoCaixa);
 		return fluxoLancamento;
 	}

@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 
 
@@ -39,10 +40,6 @@ public class Fluxocaixa implements Serializable{
     private Float entradas;
 	@Column(name = "saidas")
     private Float saidas;
-	@Column(name = "saldoanterior")
-    private Float saldoanterior;
-	@Column(name = "saldoatual")
-    private Float saldoatual;
 	@Column(name = "entradasprevistas")
     private Float entradasprevistas;
 	@Column(name = "saidasprevistas")
@@ -51,6 +48,10 @@ public class Fluxocaixa implements Serializable{
     private List<Fluxocontas> fluxocontasList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "fluxocaixa")
     private List<Fluxolancamento> fluxolancamentoList;
+    @Transient
+    private Float saldoanterior;
+    @Transient
+    private Float saldoatual;
 	
 	public Fluxocaixa() {
 	
@@ -88,21 +89,6 @@ public class Fluxocaixa implements Serializable{
 		this.saidas = saidas;
 	}
 
-	public Float getSaldoanterior() {
-		return saldoanterior;
-	}
-
-	public void setSaldoanterior(Float saldoanterior) {
-		this.saldoanterior = saldoanterior;
-	}
-
-	public Float getSaldoatual() {
-		return saldoatual;
-	}
-
-	public void setSaldoatual(Float saldoatual) {
-		this.saldoatual = saldoatual;
-	}
 
 	public Float getEntradasprevistas() {
 		return entradasprevistas;
@@ -136,6 +122,22 @@ public class Fluxocaixa implements Serializable{
 		this.fluxolancamentoList = fluxolancamentoList;
 	}
 
+	public Float getSaldoanterior() {
+		return saldoanterior;
+	}
+
+	public void setSaldoanterior(Float saldoanterior) {
+		this.saldoanterior = saldoanterior;
+	}
+
+	public Float getSaldoatual() {
+		return saldoatual;
+	}
+
+	public void setSaldoatual(Float saldoatual) {
+		this.saldoatual = saldoatual;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -163,7 +165,7 @@ public class Fluxocaixa implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Fluxocaixa [saldoatual=" + saldoatual + "]";
+		return "Fluxocaixa [saldoatual=" + (getEntradasprevistas() - getSaidasprevistas()) + "]";
 	}
 
 }
