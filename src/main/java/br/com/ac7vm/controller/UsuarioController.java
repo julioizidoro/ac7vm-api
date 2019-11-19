@@ -83,5 +83,13 @@ public class UsuarioController {
 		
 		return ResponseEntity.ok(usuarios);
 	}
-
+	
+	@GetMapping("cripto/{senha}")
+	public ResponseEntity<Usuario> criptoSenha(@PathVariable("senha") String senha) {
+		Criptografia criptografia = new Criptografia();
+		senha = (criptografia.encript(senha));
+		Usuario usuario = new Usuario();
+		usuario.setSenha(senha);
+		return ResponseEntity.ok(usuario);
+	}
 }
