@@ -29,13 +29,8 @@ import com.amazonaws.services.s3.transfer.Upload;
 public class UploadAWSS3 {
 	
 	private String bucket;
-	private AWSPropertie awsPropertie;
 	
 	public UploadAWSS3(String tipo) {
-		awsPropertie = new AWSPropertie();
-		if (tipo.equalsIgnoreCase("bucketusuario")) {
-				bucket = awsPropertie.getBucketusuario();
-		}
 	}
 
 	public String getBucket() {
@@ -55,13 +50,13 @@ public class UploadAWSS3 {
 		}
 		try {
 
-			BasicAWSCredentials awsCreds = new BasicAWSCredentials(awsPropertie.getAccesskey(),
-					awsPropertie.getSecretaccesskey());
-			AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withRegion(awsPropertie.getClientRegion())
+			BasicAWSCredentials awsCreds = new BasicAWSCredentials("awsPropertie.getAccesskey()",
+					"awsPropertie.getSecretaccesskey()");
+			AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withRegion("awsPropertie.getClientRegion()")
 					.withCredentials(new AWSStaticCredentialsProvider(awsCreds)).build();
 			TransferManager tm = TransferManagerBuilder.standard().withS3Client(s3Client).build();
-			Upload upload = tm.upload(bucket, keyName, convertFile(file));
-			upload.waitForCompletion();
+			//Upload upload = tm.upload(bucket, keyName, "convertFile(file)");
+			//upload.waitForCompletion();
 			return true;
 		} catch (AmazonServiceException e) {
 			  
@@ -70,15 +65,14 @@ public class UploadAWSS3 {
 		} catch (AmazonClientException e) {
 
 			  
-		} catch (InterruptedException e) {
-
+	
 			  
 		}
 		return false;
 
 	}
 	
-	public List<S3ObjectSummary> list() {
+	/*public List<S3ObjectSummary> list() {
 	
 	List<S3ObjectSummary> lista = new ArrayList<S3ObjectSummary>();
     
@@ -143,7 +137,7 @@ public class UploadAWSS3 {
 			e.printStackTrace();
 		}
 		return file;
-	}
+	} */
 	
 	
 		

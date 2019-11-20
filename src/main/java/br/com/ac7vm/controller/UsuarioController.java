@@ -1,6 +1,7 @@
 package br.com.ac7vm.controller;
 
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,11 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ac7vm.model.Usuario;
 import br.com.ac7vm.repository.UsuarioRepository;
+import br.com.ac7vm.service.S3Service;
 import br.com.ac7vm.util.Criptografia;
 
 @CrossOrigin
@@ -29,6 +33,8 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	@Autowired
+	private S3Service s3Service;
 	
 	@GetMapping("buscar/{situacao}")
 	public ResponseEntity<Optional<List<Usuario>>> buscarSituacao(@PathVariable("situacao") boolean situacao) {
@@ -92,4 +98,18 @@ public class UsuarioController {
 		usuario.setSenha(senha);
 		return ResponseEntity.ok(usuario);
 	}
+	
+	
+	@PostMapping("/picture")
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<Void> uploadProfilePicture(@RequestParam(name="file") MultipartFile file) {
+		URI uri = s3Service.uploadFilePictureUser(file);
+		return ResponseEntity.created(uri).build();
+	}
+	
+	
+	
+	
+	
+
 }
