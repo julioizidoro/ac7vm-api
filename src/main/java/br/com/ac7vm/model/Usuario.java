@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
@@ -51,6 +53,9 @@ public class Usuario {
 	private String fonecelular;
 	@Column(name = "situacao")
 	private boolean situacao;
+	@JoinColumn(name = "acesso_idacesso", referencedColumnName = "idacesso")
+    @ManyToOne
+    private Acesso acesso;
 	
 	public Usuario() {
 		
@@ -134,6 +139,14 @@ public class Usuario {
 
 	public void setSituacao(boolean situacao) {
 		this.situacao = situacao;
+	}
+
+	public Acesso getAcesso() {
+		return acesso;
+	}
+
+	public void setAcesso(Acesso acesso) {
+		this.acesso = acesso;
 	}
 
 	@Override

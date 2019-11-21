@@ -2,6 +2,7 @@ package br.com.ac7vm.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -58,6 +60,9 @@ public class Contas implements Serializable{
     @Size(max = 1)
     @Column(name = "tipo")
     private String tipo;
+    @Size(max = 45)
+    @Column(name = "codigobarras")
+    private String codigobarras;
     @JoinColumn(name = "planoconta_idplanoconta", referencedColumnName = "idplanoconta")
     @OneToOne(optional = false)
     private Planoconta planoconta;
@@ -67,7 +72,21 @@ public class Contas implements Serializable{
     @JoinColumn(name = "formapagamento_idformapagamento", referencedColumnName = "idformapagamento")
     @OneToOne(optional = false)
     private Formapagamento formapagamento;
+    @OneToMany(mappedBy = "contas")
+    private List<Contasarquivos> contasarquivosList;
     
+	public List<Contasarquivos> getContasarquivosList() {
+		return contasarquivosList;
+	}
+
+
+
+	public void setContasarquivosList(List<Contasarquivos> contasarquivosList) {
+		this.contasarquivosList = contasarquivosList;
+	}
+
+
+
 	public Contas() {
 		
 	}
@@ -252,6 +271,18 @@ public class Contas implements Serializable{
 
 	public void setFormapagamento(Formapagamento formapagamento) {
 		this.formapagamento = formapagamento;
+	}
+
+
+
+	public String getCodigobarras() {
+		return codigobarras;
+	}
+
+
+
+	public void setCodigobarras(String codigobarras) {
+		this.codigobarras = codigobarras;
 	}
 
 

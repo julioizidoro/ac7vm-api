@@ -46,7 +46,7 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarios);
 	}
 	
-	@PostMapping
+	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario salvar(@Valid @RequestBody Usuario usuario) {
 		Criptografia criptografia = new Criptografia();

@@ -43,21 +43,24 @@
 	<cache name="consultaFormaPagamento" 
 		maxEntriesLocalHeap="200"
 		timeToLiveSeconds="3600">
-		<cache name="consultaContas" 
+	</cache>
+	<cache name="consultaContas" 
 		maxEntriesLocalHeap="200"
 		timeToLiveSeconds="3600">
 	</cache>
 	<cache name="consultaContasReceber" 
 		maxEntriesLocalHeap="200"
 		timeToLiveSeconds="3600">
-		<cache name="consultaContas" 
+	</cache>
+	<cache name="consultaContas" 
 		maxEntriesLocalHeap="200"
 		timeToLiveSeconds="3600">
 	</cache>
 	<cache name="consultaContasPagar" 
 		maxEntriesLocalHeap="200"
 		timeToLiveSeconds="3600">
-		<cache name="consultaContas" 
+	</cache>
+	<cache name="consultaContas" 
 		maxEntriesLocalHeap="200"
 		timeToLiveSeconds="3600">
 	</cache>
