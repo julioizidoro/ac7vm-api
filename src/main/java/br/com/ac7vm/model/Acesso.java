@@ -1,15 +1,15 @@
 package br.com.ac7vm.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
+@Entity
 public class Acesso implements Serializable	 {
 
     private static final long serialVersionUID = 1L;
@@ -20,105 +20,107 @@ public class Acesso implements Serializable	 {
     private Integer idacesso;
     @Column(name = "nome")
     private String nome;
-    @Column(name = "dashBoard")
-    private Short dashBoard;
+    @Column(name = "dashboard")
+    private boolean dashboard;
     @Column(name = "cadastro")
-    private Short cadastro;
+    private boolean cadastro;
     @Column(name = "cadclienteincluir")
-    private Short cadclienteincluir;
+    private boolean cadclienteincluir;
     @Column(name = "cadclienteeditar")
-    private Short cadclienteeditar;
+    private boolean cadclienteeditar;
     @Column(name = "cadfornecedorincluir")
-    private Short cadfornecedorincluir;
+    private boolean cadfornecedorincluir;
     @Column(name = "cadfornecedoreditar")
-    private Short cadfornecedoreditar;
+    private boolean cadfornecedoreditar;
     @Column(name = "cadobrasincluir")
-    private Short cadobrasincluir;
+    private boolean cadobrasincluir;
     @Column(name = "cadobraseditar")
-    private Short cadobraseditar;
+    private boolean cadobraseditar;
     @Column(name = "cadfaseobraincluir")
-    private Short cadfaseobraincluir;
+    private boolean cadfaseobraincluir;
     @Column(name = "cadfaseobraseditar")
-    private Short cadfaseobraseditar;
+    private boolean cadfaseobraseditar;
     @Column(name = "cadsubfaseobraincluir")
-    private Short cadsubfaseobraincluir;
+    private boolean cadsubfaseobraincluir;
     @Column(name = "cadsubfaseobraeditar")
-    private Short cadsubfaseobraeditar;
+    private boolean cadsubfaseobraeditar;
     @Column(name = "cadprodutosincluir")
-    private Short cadprodutosincluir;
+    private boolean cadprodutosincluir;
     @Column(name = "cadprodutoseditar")
-    private Short cadprodutoseditar;
+    private boolean cadprodutoseditar;
     @Column(name = "cadgrupocontasincluir")
-    private Short cadgrupocontasincluir;
+    private boolean cadgrupocontasincluir;
     @Column(name = "cadgrupocontaseditar")
-    private Short cadgrupocontaseditar;
+    private boolean cadgrupocontaseditar;
     @Column(name = "cadplanocontasincluir")
-    private Short cadplanocontasincluir;
+    private boolean cadplanocontasincluir;
     @Column(name = "cadplanocontaseditar")
-    private Short cadplanocontaseditar;
+    private boolean cadplanocontaseditar;
     @Column(name = "bens")
-    private Short bens;
-    @Column(name = "bensincluir")
-    private Short bensincluir;
-    @Column(name = "benseditar")
-    private Short benseditar;
+    private boolean bens;
+    @Column(name = "benscontrole")
+    private boolean benscontrole;
+    @Column(name = "benscontroleincluir")
+    private boolean benscontroleincluir;
+    @Column(name = "benscontroleeditar")
+    private boolean benscontroleeditar;
     @Column(name = "obras")
-    private Short obras;
+    private boolean obras;
     @Column(name = "obrainclir")
-    private Short obrainclir;
+    private boolean obrainclir;
     @Column(name = "obraeditar")
-    private Short obraeditar;
+    private boolean obraeditar;
     @Column(name = "compras")
-    private Short compras;
+    private boolean compras;
     @Column(name = "comprassolciitacao")
-    private Short comprassolciitacao;
+    private boolean comprassolciitacao;
     @Column(name = "comprassolciitacaoincluir")
-    private Short comprassolciitacaoincluir;
+    private boolean comprassolciitacaoincluir;
     @Column(name = "comprassolciitacaoeditar")
-    private Short comprassolciitacaoeditar;
+    private boolean comprassolciitacaoeditar;
     @Column(name = "compraspedido")
-    private Short compraspedido;
+    private boolean compraspedido;
     @Column(name = "compraspedidoincluir")
-    private Short compraspedidoincluir;
+    private boolean compraspedidoincluir;
     @Column(name = "compraspedidoeditar")
-    private Short compraspedidoeditar;
+    private boolean compraspedidoeditar;
     @Column(name = "financeiro")
-    private Short financeiro;
+    private boolean financeiro;
     @Column(name = "financeirocp")
-    private Short financeirocp;
+    private boolean financeirocp;
     @Column(name = "financeirocpincluir")
-    private Short financeirocpincluir;
+    private boolean financeirocpincluir;
     @Column(name = "financeirocpeditar")
-    private Short financeirocpeditar;
+    private boolean financeirocpeditar;
     @Column(name = "financeirocppagar")
-    private Short financeirocppagar;
+    private boolean financeirocppagar;
     @Column(name = "financeirocr")
-    private Short financeirocr;
+    private boolean financeirocr;
     @Column(name = "financeirocrincluir")
-    private Short financeirocrincluir;
+    private boolean financeirocrincluir;
     @Column(name = "financeirocreditar")
-    private Short financeirocreditar;
+    private boolean financeirocreditar;
     @Column(name = "financeirocrreceber")
-    private Short financeirocrreceber;
+    private boolean financeirocrreceber;
     @Column(name = "financeirofc")
-    private Short financeirofc;
+    private boolean financeirofc;
     @Column(name = "cadcliente")
-    private Short cadcliente;
+    private boolean cadcliente;
     @Column(name = "cadfornecedor")
-    private Short cadfornecedor;
+    private boolean cadfornecedor;
     @Column(name = "cadobras")
-    private Short cadobras;
+    private boolean cadobras;
     @Column(name = "cadplanocontas")
-    private Short cadplanocontas;
+    private boolean cadplanocontas;
     @Column(name = "cadgrupocontas")
-    private Short cadgrupocontas;
+    private boolean cadgrupocontas;
     @Column(name = "cadfasesobras")
-    private Short cadfasesobras;
+    private boolean cadfasesobras;
     @Column(name = "cadprodutos")
-    private Short cadprodutos;
+    private boolean cadprodutos;
     @Column(name = "cadsubfaseobras")
-    private Short cadsubfaseobras;
-
+    private boolean cadsubfaseobras;
+   
     public Acesso() {
     }
 
@@ -142,400 +144,411 @@ public class Acesso implements Serializable	 {
         this.nome = nome;
     }
 
-    public Short getDashBoard() {
-        return dashBoard;
-    }
+    
 
-    public void setDashBoard(Short dashBoard) {
-        this.dashBoard = dashBoard;
-    }
+    public boolean isDashboard() {
+		return dashboard;
+	}
 
-    public Short getCadastro() {
+	public void setDashboard(boolean dashboard) {
+		this.dashboard = dashboard;
+	}
+
+	public boolean getCadastro() {
         return cadastro;
     }
 
-    public void setCadastro(Short cadastro) {
+    public void setCadastro(boolean cadastro) {
         this.cadastro = cadastro;
     }
 
-    public Short getCadclienteincluir() {
+    public boolean getCadclienteincluir() {
         return cadclienteincluir;
     }
 
-    public void setCadclienteincluir(Short cadclienteincluir) {
+    public void setCadclienteincluir(boolean cadclienteincluir) {
         this.cadclienteincluir = cadclienteincluir;
     }
 
-    public Short getCadclienteeditar() {
+    public boolean getCadclienteeditar() {
         return cadclienteeditar;
     }
 
-    public void setCadclienteeditar(Short cadclienteeditar) {
+    public void setCadclienteeditar(boolean cadclienteeditar) {
         this.cadclienteeditar = cadclienteeditar;
     }
 
-    public Short getCadfornecedorincluir() {
+    public boolean getCadfornecedorincluir() {
         return cadfornecedorincluir;
     }
 
-    public void setCadfornecedorincluir(Short cadfornecedorincluir) {
+    public void setCadfornecedorincluir(boolean cadfornecedorincluir) {
         this.cadfornecedorincluir = cadfornecedorincluir;
     }
 
-    public Short getCadfornecedoreditar() {
+    public boolean getCadfornecedoreditar() {
         return cadfornecedoreditar;
     }
 
-    public void setCadfornecedoreditar(Short cadfornecedoreditar) {
+    public void setCadfornecedoreditar(boolean cadfornecedoreditar) {
         this.cadfornecedoreditar = cadfornecedoreditar;
     }
 
-    public Short getCadobrasincluir() {
+    public boolean getCadobrasincluir() {
         return cadobrasincluir;
     }
 
-    public void setCadobrasincluir(Short cadobrasincluir) {
+    public void setCadobrasincluir(boolean cadobrasincluir) {
         this.cadobrasincluir = cadobrasincluir;
     }
 
-    public Short getCadobraseditar() {
+    public boolean getCadobraseditar() {
         return cadobraseditar;
     }
 
-    public void setCadobraseditar(Short cadobraseditar) {
+    public void setCadobraseditar(boolean cadobraseditar) {
         this.cadobraseditar = cadobraseditar;
     }
 
-    public Short getCadfaseobraincluir() {
+    public boolean getCadfaseobraincluir() {
         return cadfaseobraincluir;
     }
 
-    public void setCadfaseobraincluir(Short cadfaseobraincluir) {
+    public void setCadfaseobraincluir(boolean cadfaseobraincluir) {
         this.cadfaseobraincluir = cadfaseobraincluir;
     }
 
-    public Short getCadfaseobraseditar() {
+    public boolean getCadfaseobraseditar() {
         return cadfaseobraseditar;
     }
 
-    public void setCadfaseobraseditar(Short cadfaseobraseditar) {
+    public void setCadfaseobraseditar(boolean cadfaseobraseditar) {
         this.cadfaseobraseditar = cadfaseobraseditar;
     }
 
-    public Short getCadsubfaseobraincluir() {
+    public boolean getCadsubfaseobraincluir() {
         return cadsubfaseobraincluir;
     }
 
-    public void setCadsubfaseobraincluir(Short cadsubfaseobraincluir) {
+    public void setCadsubfaseobraincluir(boolean cadsubfaseobraincluir) {
         this.cadsubfaseobraincluir = cadsubfaseobraincluir;
     }
 
-    public Short getCadsubfaseobraeditar() {
+    public boolean getCadsubfaseobraeditar() {
         return cadsubfaseobraeditar;
     }
 
-    public void setCadsubfaseobraeditar(Short cadsubfaseobraeditar) {
+    public void setCadsubfaseobraeditar(boolean cadsubfaseobraeditar) {
         this.cadsubfaseobraeditar = cadsubfaseobraeditar;
     }
 
-    public Short getCadprodutosincluir() {
+    public boolean getCadprodutosincluir() {
         return cadprodutosincluir;
     }
 
-    public void setCadprodutosincluir(Short cadprodutosincluir) {
+    public void setCadprodutosincluir(boolean cadprodutosincluir) {
         this.cadprodutosincluir = cadprodutosincluir;
     }
 
-    public Short getCadprodutoseditar() {
+    public boolean getCadprodutoseditar() {
         return cadprodutoseditar;
     }
 
-    public void setCadprodutoseditar(Short cadprodutoseditar) {
+    public void setCadprodutoseditar(boolean cadprodutoseditar) {
         this.cadprodutoseditar = cadprodutoseditar;
     }
 
-    public Short getCadgrupocontasincluir() {
+    public boolean getCadgrupocontasincluir() {
         return cadgrupocontasincluir;
     }
 
-    public void setCadgrupocontasincluir(Short cadgrupocontasincluir) {
+    public void setCadgrupocontasincluir(boolean cadgrupocontasincluir) {
         this.cadgrupocontasincluir = cadgrupocontasincluir;
     }
 
-    public Short getCadgrupocontaseditar() {
+    public boolean getCadgrupocontaseditar() {
         return cadgrupocontaseditar;
     }
 
-    public void setCadgrupocontaseditar(Short cadgrupocontaseditar) {
+    public void setCadgrupocontaseditar(boolean cadgrupocontaseditar) {
         this.cadgrupocontaseditar = cadgrupocontaseditar;
     }
 
-    public Short getCadplanocontasincluir() {
+    public boolean getCadplanocontasincluir() {
         return cadplanocontasincluir;
     }
 
-    public void setCadplanocontasincluir(Short cadplanocontasincluir) {
+    public void setCadplanocontasincluir(boolean cadplanocontasincluir) {
         this.cadplanocontasincluir = cadplanocontasincluir;
     }
 
-    public Short getCadplanocontaseditar() {
+    public boolean getCadplanocontaseditar() {
         return cadplanocontaseditar;
     }
 
-    public void setCadplanocontaseditar(Short cadplanocontaseditar) {
+    public void setCadplanocontaseditar(boolean cadplanocontaseditar) {
         this.cadplanocontaseditar = cadplanocontaseditar;
     }
 
-    public Short getBens() {
+    public boolean getBens() {
         return bens;
     }
 
-    public void setBens(Short bens) {
+    public void setBens(boolean bens) {
         this.bens = bens;
     }
 
-    public Short getBensincluir() {
-        return bensincluir;
-    }
+    
 
-    public void setBensincluir(Short bensincluir) {
-        this.bensincluir = bensincluir;
-    }
+    public boolean isBenscontrole() {
+		return benscontrole;
+	}
 
-    public Short getBenseditar() {
-        return benseditar;
-    }
+	public void setBenscontrole(boolean benscontrole) {
+		this.benscontrole = benscontrole;
+	}
 
-    public void setBenseditar(Short benseditar) {
-        this.benseditar = benseditar;
-    }
+	public boolean isBenscontroleincluir() {
+		return benscontroleincluir;
+	}
 
-    public Short getObras() {
+	public void setBenscontroleincluir(boolean benscontroleincluir) {
+		this.benscontroleincluir = benscontroleincluir;
+	}
+
+	public boolean isBenscontroleeditar() {
+		return benscontroleeditar;
+	}
+
+	public void setBenscontroleeditar(boolean benscontroleeditar) {
+		this.benscontroleeditar = benscontroleeditar;
+	}
+
+	public boolean getObras() {
         return obras;
     }
 
-    public void setObras(Short obras) {
+    public void setObras(boolean obras) {
         this.obras = obras;
     }
 
-    public Short getObrainclir() {
+    public boolean getObrainclir() {
         return obrainclir;
     }
 
-    public void setObrainclir(Short obrainclir) {
+    public void setObrainclir(boolean obrainclir) {
         this.obrainclir = obrainclir;
     }
 
-    public Short getObraeditar() {
+    public boolean getObraeditar() {
         return obraeditar;
     }
 
-    public void setObraeditar(Short obraeditar) {
+    public void setObraeditar(boolean obraeditar) {
         this.obraeditar = obraeditar;
     }
 
-    public Short getCompras() {
+    public boolean getCompras() {
         return compras;
     }
 
-    public void setCompras(Short compras) {
+    public void setCompras(boolean compras) {
         this.compras = compras;
     }
 
-    public Short getComprassolciitacao() {
+    public boolean getComprassolciitacao() {
         return comprassolciitacao;
     }
 
-    public void setComprassolciitacao(Short comprassolciitacao) {
+    public void setComprassolciitacao(boolean comprassolciitacao) {
         this.comprassolciitacao = comprassolciitacao;
     }
 
-    public Short getComprassolciitacaoincluir() {
+    public boolean getComprassolciitacaoincluir() {
         return comprassolciitacaoincluir;
     }
 
-    public void setComprassolciitacaoincluir(Short comprassolciitacaoincluir) {
+    public void setComprassolciitacaoincluir(boolean comprassolciitacaoincluir) {
         this.comprassolciitacaoincluir = comprassolciitacaoincluir;
     }
 
-    public Short getComprassolciitacaoeditar() {
+    public boolean getComprassolciitacaoeditar() {
         return comprassolciitacaoeditar;
     }
 
-    public void setComprassolciitacaoeditar(Short comprassolciitacaoeditar) {
+    public void setComprassolciitacaoeditar(boolean comprassolciitacaoeditar) {
         this.comprassolciitacaoeditar = comprassolciitacaoeditar;
     }
 
-    public Short getCompraspedido() {
+    public boolean getCompraspedido() {
         return compraspedido;
     }
 
-    public void setCompraspedido(Short compraspedido) {
+    public void setCompraspedido(boolean compraspedido) {
         this.compraspedido = compraspedido;
     }
 
-    public Short getCompraspedidoincluir() {
+    public boolean getCompraspedidoincluir() {
         return compraspedidoincluir;
     }
 
-    public void setCompraspedidoincluir(Short compraspedidoincluir) {
+    public void setCompraspedidoincluir(boolean compraspedidoincluir) {
         this.compraspedidoincluir = compraspedidoincluir;
     }
 
-    public Short getCompraspedidoeditar() {
+    public boolean getCompraspedidoeditar() {
         return compraspedidoeditar;
     }
 
-    public void setCompraspedidoeditar(Short compraspedidoeditar) {
+    public void setCompraspedidoeditar(boolean compraspedidoeditar) {
         this.compraspedidoeditar = compraspedidoeditar;
     }
 
-    public Short getFinanceiro() {
+    public boolean getFinanceiro() {
         return financeiro;
     }
 
-    public void setFinanceiro(Short financeiro) {
+    public void setFinanceiro(boolean financeiro) {
         this.financeiro = financeiro;
     }
 
-    public Short getFinanceirocp() {
+    public boolean getFinanceirocp() {
         return financeirocp;
     }
 
-    public void setFinanceirocp(Short financeirocp) {
+    public void setFinanceirocp(boolean financeirocp) {
         this.financeirocp = financeirocp;
     }
 
-    public Short getFinanceirocpincluir() {
+    public boolean getFinanceirocpincluir() {
         return financeirocpincluir;
     }
 
-    public void setFinanceirocpincluir(Short financeirocpincluir) {
+    public void setFinanceirocpincluir(boolean financeirocpincluir) {
         this.financeirocpincluir = financeirocpincluir;
     }
 
-    public Short getFinanceirocpeditar() {
+    public boolean getFinanceirocpeditar() {
         return financeirocpeditar;
     }
 
-    public void setFinanceirocpeditar(Short financeirocpeditar) {
+    public void setFinanceirocpeditar(boolean financeirocpeditar) {
         this.financeirocpeditar = financeirocpeditar;
     }
 
-    public Short getFinanceirocppagar() {
+    public boolean getFinanceirocppagar() {
         return financeirocppagar;
     }
 
-    public void setFinanceirocppagar(Short financeirocppagar) {
+    public void setFinanceirocppagar(boolean financeirocppagar) {
         this.financeirocppagar = financeirocppagar;
     }
 
-    public Short getFinanceirocr() {
+    public boolean getFinanceirocr() {
         return financeirocr;
     }
 
-    public void setFinanceirocr(Short financeirocr) {
+    public void setFinanceirocr(boolean financeirocr) {
         this.financeirocr = financeirocr;
     }
 
-    public Short getFinanceirocrincluir() {
+    public boolean getFinanceirocrincluir() {
         return financeirocrincluir;
     }
 
-    public void setFinanceirocrincluir(Short financeirocrincluir) {
+    public void setFinanceirocrincluir(boolean financeirocrincluir) {
         this.financeirocrincluir = financeirocrincluir;
     }
 
-    public Short getFinanceirocreditar() {
+    public boolean getFinanceirocreditar() {
         return financeirocreditar;
     }
 
-    public void setFinanceirocreditar(Short financeirocreditar) {
+    public void setFinanceirocreditar(boolean financeirocreditar) {
         this.financeirocreditar = financeirocreditar;
     }
 
-    public Short getFinanceirocrreceber() {
+    public boolean getFinanceirocrreceber() {
         return financeirocrreceber;
     }
 
-    public void setFinanceirocrreceber(Short financeirocrreceber) {
+    public void setFinanceirocrreceber(boolean financeirocrreceber) {
         this.financeirocrreceber = financeirocrreceber;
     }
 
-    public Short getFinanceirofc() {
+    public boolean getFinanceirofc() {
         return financeirofc;
     }
 
-    public void setFinanceirofc(Short financeirofc) {
+    public void setFinanceirofc(boolean financeirofc) {
         this.financeirofc = financeirofc;
     }
 
-    public Short getCadcliente() {
+    public boolean getCadcliente() {
         return cadcliente;
     }
 
-    public void setCadcliente(Short cadcliente) {
+    public void setCadcliente(boolean cadcliente) {
         this.cadcliente = cadcliente;
     }
 
-    public Short getCadfornecedor() {
+    public boolean getCadfornecedor() {
         return cadfornecedor;
     }
 
-    public void setCadfornecedor(Short cadfornecedor) {
+    public void setCadfornecedor(boolean cadfornecedor) {
         this.cadfornecedor = cadfornecedor;
     }
 
-    public Short getCadobras() {
+    public boolean getCadobras() {
         return cadobras;
     }
 
-    public void setCadobras(Short cadobras) {
+    public void setCadobras(boolean cadobras) {
         this.cadobras = cadobras;
     }
 
-    public Short getCadplanocontas() {
+    public boolean getCadplanocontas() {
         return cadplanocontas;
     }
 
-    public void setCadplanocontas(Short cadplanocontas) {
+    public void setCadplanocontas(boolean cadplanocontas) {
         this.cadplanocontas = cadplanocontas;
     }
 
-    public Short getCadgrupocontas() {
+    public boolean getCadgrupocontas() {
         return cadgrupocontas;
     }
 
-    public void setCadgrupocontas(Short cadgrupocontas) {
+    public void setCadgrupocontas(boolean cadgrupocontas) {
         this.cadgrupocontas = cadgrupocontas;
     }
 
-    public Short getCadfasesobras() {
+    public boolean getCadfasesobras() {
         return cadfasesobras;
     }
 
-    public void setCadfasesobras(Short cadfasesobras) {
+    public void setCadfasesobras(boolean cadfasesobras) {
         this.cadfasesobras = cadfasesobras;
     }
 
-    public Short getCadprodutos() {
+    public boolean getCadprodutos() {
         return cadprodutos;
     }
 
-    public void setCadprodutos(Short cadprodutos) {
+    public void setCadprodutos(boolean cadprodutos) {
         this.cadprodutos = cadprodutos;
     }
 
-    public Short getCadsubfaseobras() {
+    public boolean getCadsubfaseobras() {
         return cadsubfaseobras;
     }
 
-    public void setCadsubfaseobras(Short cadsubfaseobras) {
+    public void setCadsubfaseobras(boolean cadsubfaseobras) {
         this.cadsubfaseobras = cadsubfaseobras;
     }
 
-    
-    @Override
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (idacesso != null ? idacesso.hashCode() : 0);

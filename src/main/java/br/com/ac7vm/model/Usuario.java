@@ -54,8 +54,10 @@ public class Usuario {
 	@Column(name = "situacao")
 	private boolean situacao;
 	@JoinColumn(name = "acesso_idacesso", referencedColumnName = "idacesso")
-    @ManyToOne
-    private Acesso acesso;
+	@ManyToOne
+	private Acesso acesso;
+	
+	
 	
 	public Usuario() {
 		
