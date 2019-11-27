@@ -26,7 +26,7 @@ public class Usuario {
 	private String nome;
 	@Column(name = "datanascimento")
     @Temporal(TemporalType.DATE)
-    private Date nascimento;
+    private Date datanascimento;
 	@NotEmpty
 	@Size(max = 45)
 	@Column(name = "login")
@@ -36,17 +36,9 @@ public class Usuario {
 	@Column(name = "senha")
 	private String senha;
 	@NotEmpty
-	@Size(max = 1)
-	@Column(name = "sexo")
-	private String sexo;
-	@NotEmpty
 	@Size(max = 200)
 	@Column(name = "email")
 	private String email;
-	@NotEmpty
-	@Size(max = 15)
-	@Column(name = "fonefixo")
-	private String fonefix;
 	@NotEmpty
 	@Size(max = 15)
 	@Column(name = "fonecelular")
@@ -79,12 +71,14 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public Date getNascimento() {
-		return nascimento;
+	
+
+	public Date getDatanascimento() {
+		return datanascimento;
 	}
 
-	public void setNascimento(Date nascimento) {
-		this.nascimento = nascimento;
+	public void setDatanascimento(Date datanascimento) {
+		this.datanascimento = datanascimento;
 	}
 
 	public String getLogin() {
@@ -103,14 +97,6 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -119,13 +105,6 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public String getFonefix() {
-		return fonefix;
-	}
-
-	public void setFonefix(String fonefix) {
-		this.fonefix = fonefix;
-	}
 
 	public String getFonecelular() {
 		return fonecelular;

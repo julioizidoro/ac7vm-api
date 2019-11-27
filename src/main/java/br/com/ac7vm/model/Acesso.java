@@ -1,6 +1,7 @@
 package br.com.ac7vm.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -8,6 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Acesso implements Serializable	 {
@@ -120,6 +125,27 @@ public class Acesso implements Serializable	 {
     private boolean cadprodutos;
     @Column(name = "cadsubfaseobras")
     private boolean cadsubfaseobras;
+    
+    @Column(name = "cadusuario")
+    private boolean cadusuario;
+    @Column(name = "cadusuarioincluir")
+    private boolean cadusuarioincluir;
+    @Column(name = "cadusuarioeditar")
+    private boolean cadusuarioediar;
+    
+    @Column(name = "cadacesso")
+    private boolean cadacesso;
+    @Column(name = "cadacessoincluir")
+    private boolean cadacessoincluir;
+    @Column(name = "cadacessoeditar")
+    private boolean cadacessoeditar;
+    @JsonBackReference
+    @OneToMany(mappedBy = "acesso")
+    private List<Usuario> usuarioList;
+    @Transient
+    private String numerousuario;
+    @Transient
+    private String nomeusuario;
    
     public Acesso() {
     }
@@ -547,6 +573,80 @@ public class Acesso implements Serializable	 {
     public void setCadsubfaseobras(boolean cadsubfaseobras) {
         this.cadsubfaseobras = cadsubfaseobras;
     }
+
+	public boolean isCadusuario() {
+		return cadusuario;
+	}
+
+	public void setCadusuario(boolean cadusuario) {
+		this.cadusuario = cadusuario;
+	}
+
+	public boolean isCadusuarioincluir() {
+		return cadusuarioincluir;
+	}
+
+	public void setCadusuarioincluir(boolean cadusuarioincluir) {
+		this.cadusuarioincluir = cadusuarioincluir;
+	}
+
+	public boolean isCadusuarioediar() {
+		return cadusuarioediar;
+	}
+
+	public void setCadusuarioediar(boolean cadusuarioediar) {
+		this.cadusuarioediar = cadusuarioediar;
+	}
+
+	public boolean isCadacesso() {
+		return cadacesso;
+	}
+
+	public void setCadacesso(boolean cadacesso) {
+		this.cadacesso = cadacesso;
+	}
+
+	public boolean isCadacessoincluir() {
+		return cadacessoincluir;
+	}
+
+	public void setCadacessoincluir(boolean cadacessoincluir) {
+		this.cadacessoincluir = cadacessoincluir;
+	}
+
+	public boolean isCadacessoeditar() {
+		return cadacessoeditar;
+	}
+
+	public void setCadacessoeditar(boolean cadacessoeditar) {
+		this.cadacessoeditar = cadacessoeditar;
+	}
+
+	public List<Usuario> getUsuarioList() {
+		return usuarioList;
+	}
+
+	public void setUsuarioList(List<Usuario> usuarioList) {
+		this.usuarioList = usuarioList;
+	}
+
+	public String getNumerousuario() {
+		return numerousuario;
+	}
+
+	
+
+	public void setNumerousuario(String numerousuario) {
+		this.numerousuario = numerousuario;
+	}
+
+	public String getNomeusuario() {
+		return nomeusuario;
+	}
+
+	public void setNomeusuario(String nomeusuario) {
+		this.nomeusuario = nomeusuario;
+	}
 
 	@Override
     public int hashCode() {

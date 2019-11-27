@@ -54,5 +54,26 @@ public class AcessoController {
 		
 		return ResponseEntity.ok(lista);
 	}
+	
+	@GetMapping("listar")
+	public ResponseEntity<List<Acesso>> listar() {
+		List<Acesso> lista = acessoRepository.findAll();
+		if (lista==null) {
+			return ResponseEntity.notFound().build();
+		}
+		for (int i=0;i<lista.size();i++) {
+			if (lista.get(i).getUsuarioList().size()<=9) {
+				lista.get(i).setNumerousuario("00" +String.valueOf(lista.get(i).getUsuarioList().size()));
+			} else if (lista.get(i).getUsuarioList().size()<=99) {
+				lista.get(i).setNumerousuario("0" +String.valueOf(lista.get(i).getUsuarioList().size()));
+			} else lista.get(i).setNumerousuario(String.valueOf(lista.get(i).getUsuarioList().size()));
+			String nome = "";
+			for (int j=0;j<lista.get(i).getUsuarioList().size();j++) {
+				nome = nome + lista.get(i).getUsuarioList().get(j).getNome() + "\b\n";
+			}
+			lista.get(i).setNomeusuario(nome);
+		}
+		return ResponseEntity.ok(lista);
+	}
 
 }
