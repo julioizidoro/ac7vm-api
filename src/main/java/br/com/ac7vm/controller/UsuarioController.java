@@ -55,6 +55,12 @@ public class UsuarioController {
 		return usuarioRepository.save(usuario);
 	}
 	
+	@PostMapping("/update")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Usuario update(@Valid @RequestBody Usuario usuario) {
+		return usuarioRepository.save(usuario);
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> buscar(@PathVariable Integer id) {
 		Optional<Usuario> usuario = usuarioRepository.findById(id);

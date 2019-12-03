@@ -45,6 +45,9 @@ public class Usuario {
 	private String fonecelular;
 	@Column(name = "situacao")
 	private boolean situacao;
+	@Column(name = "urlfoto")
+	private String urlfoto;
+	
 	@JoinColumn(name = "acesso_idacesso", referencedColumnName = "idacesso")
 	@ManyToOne
 	private Acesso acesso;
@@ -128,6 +131,16 @@ public class Usuario {
 
 	public void setAcesso(Acesso acesso) {
 		this.acesso = acesso;
+	}
+
+	
+
+	public String getUrlfoto() {
+		return urlfoto;
+	}
+
+	public void setUrlfoto(String urlfoto) {
+		this.urlfoto = urlfoto;
 	}
 
 	@Override
