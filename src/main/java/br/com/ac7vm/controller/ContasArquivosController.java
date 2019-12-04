@@ -21,7 +21,7 @@ import br.com.ac7vm.repository.ContasArquivosRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/contasarquivos")
+@RequestMapping("/api/ca")
 public class ContasArquivosController {
 	
 	@Autowired

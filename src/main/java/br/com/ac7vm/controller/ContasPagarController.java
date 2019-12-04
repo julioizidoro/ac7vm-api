@@ -1,5 +1,6 @@
 package br.com.ac7vm.controller;
 
+import java.net.URI;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -17,8 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ac7vm.model.Contas;
 import br.com.ac7vm.model.Fluxocaixa;
@@ -26,6 +29,7 @@ import br.com.ac7vm.model.Fluxocontas;
 import br.com.ac7vm.repository.ContasRepository;
 import br.com.ac7vm.repository.FluxoCaixaRepository;
 import br.com.ac7vm.repository.FluxoContasRepository;
+import br.com.ac7vm.service.S3Service;
 import br.com.ac7vm.util.Conversor;
 
 @CrossOrigin
@@ -39,6 +43,8 @@ public class ContasPagarController {
 	private FluxoCaixaRepository fluxoCaixaRepository;
 	@Autowired
 	private FluxoContasRepository fluxoContasRepository;
+	@Autowired
+	private S3Service s3Service;
 	
 	//Consulta por ID
 	@GetMapping("/id/{id}")
@@ -203,6 +209,13 @@ public class ContasPagarController {
 			fluxoContasRepository.save(fluxoContas);
 		}
 		return contasRepository.save(conta);
+	}
+	
+	@PostMapping("/upload")
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<Void> uploadFile(@RequestParam(name="file") MultipartFile file) {
+		URI uri = s3Service.uploadFileCP(file);
+		return ResponseEntity.created(uri).build();
 	}
 
 }

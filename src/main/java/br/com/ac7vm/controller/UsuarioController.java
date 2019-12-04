@@ -112,10 +112,4 @@ public class UsuarioController {
 		URI uri = s3Service.uploadFilePictureUser(file);
 		return ResponseEntity.created(uri).build();
 	}
-	
-	
-	
-	
-	
-
 }
