@@ -56,6 +56,23 @@ public class Clientecomplemento implements Serializable{
 	@Size(max = 1)
 	@Column(name = "sexo")
 	private String  sexo;
+	@Column(name = "datanascimento")
+    @Temporal(TemporalType.DATE)
+    private Date datanascimento;
+	public Date getDatanascimento() {
+		return datanascimento;
+	}
+
+
+
+
+
+	public void setDatanascimento(Date datanascimento) {
+		this.datanascimento = datanascimento;
+	}
+
+
+
 	@JsonBackReference
 	@JoinColumn(name = "instituicao_idinstituicao", referencedColumnName = "idinstituicao")
 	@OneToOne(optional = false)
