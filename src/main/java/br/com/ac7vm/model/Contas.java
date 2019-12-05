@@ -60,9 +60,6 @@ public class Contas implements Serializable{
     @Size(max = 1)
     @Column(name = "tipo")
     private String tipo;
-    @Size(max = 45)
-    @Column(name = "codigobarras")
-    private String codigobarras;
     @JoinColumn(name = "planoconta_idplanoconta", referencedColumnName = "idplanoconta")
     @OneToOne(optional = false)
     private Planoconta planoconta;
@@ -72,6 +69,8 @@ public class Contas implements Serializable{
     @JoinColumn(name = "formapagamento_idformapagamento", referencedColumnName = "idformapagamento")
     @OneToOne(optional = false)
     private Formapagamento formapagamento;
+    @Column(name = "codigobarras")
+    private String codigobarras;
     @OneToMany(mappedBy = "contas")
     private List<Contasarquivos> contasarquivosList;
     
